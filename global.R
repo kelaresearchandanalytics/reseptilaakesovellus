@@ -38,4 +38,6 @@ add_line_break2 <- function(x = "very many many characters and words and sentenc
 # is.even
 is.even <- function(x) x %% 2 == 0
 
-atc_color_palette <- c('#4daf4a','#377eb8','#e41a1c')
+atc_color_palette <- c('#1EE004','#AF6CE6','#F52087')
+
+# ['#1b9e77','#d95f02','#7570b3']

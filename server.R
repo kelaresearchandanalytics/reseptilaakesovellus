@@ -731,7 +731,15 @@ shinyServer(function(input, output, session) {
                                                                                                                                               "Vaasa Hospital District", "Southwest Finland Hospital District", 
                                                                                                                                               "Åland")), row.names = c(NA, -21L), class = c("tbl_df", "tbl", 
                                                                                                                                                                                             "data.frame"))
-    grid_geo <- left_join(geofi::grid_sairaanhoitop %>% mutate(code = as.character(as.integer(code))), 
+    mygrid <- data.frame(
+      name = c("Lapin SHP", "Länsi-Pohjan SHP", "Kainuun SHP", "Pohjois-Pohjanmaan SHP", "Keski-Pohjanmaan SHP", "Pohjois-Karjalan SHP", "Pohjois-Savon SHP", "Keski-Suomen SHP", "Etelä-Pohjanmaan SHP", "Vaasan SHP", "Satakunnan SHP", "Pirkanmaan SHP", "Päijät-Hämeen SHP", "Itä-Savon SHP", "Etelä-Savon SHP", "Etelä-Karjalan SHP", "Kymenlaakson SHP", "Kanta-Hämeen SHP", "Varsinais-Suomen SHP", "Helsingin ja Uudenmaan SHP", "Ahvenanmaa"),
+      code = c("21", "20", "19", "18", "17", "12", "13", "14", "15", "16", "4", "6", "7", "11", "10", "9", "8", "5", "3", "25", "0"),
+      row = c(1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6),
+      col = c(4, 3, 4, 3, 2, 5, 4, 3, 2, 1, 1, 2, 3, 5, 4, 4, 3, 2, 1, 2, 1),
+      stringsAsFactors = FALSE
+    )
+    
+    grid_geo <- left_join(mygrid %>% mutate(code = as.character(as.integer(code))), 
                           shpt %>% mutate(code = as.character(as.integer(code)))) %>% 
       filter(!is.na(name_fi))
     
@@ -764,6 +772,10 @@ shinyServer(function(input, output, session) {
     # plot_subtitle = unique(datplot$description)
     # plot_ytitle <- unique(datplot$name)
     plot_xtitle <- i18n$t("viikko")
+    
+    vkos <- 1:52
+    breaksit <- vkos[vkos %% 4 == 0]
+    
     
     
     if (input$value_region == "Koko Suomi"){
@@ -836,9 +848,8 @@ shinyServer(function(input, output, session) {
                                                          scientific = FALSE),
                              limits = c(0,NA)
           ) +
-          scale_x_continuous(breaks = (1:max(datplot2$viikko))[is.even(1:max(datplot2$viikko))], 
+          scale_x_continuous(breaks = breaksit, 
                              limits = c(1,max(datplot2$viikko)))
-        
         
         p1 + p2 +
           plot_layout(
@@ -874,19 +885,20 @@ shinyServer(function(input, output, session) {
                                 group = paste0(atc_selite,vuosi), 
                                 shape = atc_selite)) +
         geom_line(alpha = .7) +
-        geom_point(size = 1.8, stroke = .4, alpha = .7, color = "dim grey") +
+        geom_point(size = 1.1, stroke = .4, alpha = 1, color = "dim grey") +
         geofacet::facet_geo(~aluenimi, grid = grid_geo, scales = "free") +
         # facet_wrap(~alue) +
         hrbrthemes::theme_ipsum(base_family = "PT Sans", base_size = 10, axis_title_size = 12) +
         theme(legend.position = "top", 
               panel.grid.minor = element_blank(),
               legend.text = element_text(size = 12),
+              axis.text.x = element_text(size = 7),
               legend.key.height = unit(5, "mm"),
               legend.key.width = unit(15, "mm"),
               legend.direction = "vertical"
         ) +
         scale_shape_manual(values=c(21, 22, 23, 24, 25)) +
-        scale_x_continuous(breaks = (1:max(datplot$viikko))[is.even(1:max(datplot$viikko))]) +
+        scale_x_continuous(breaks = breaksit) +
         labs(fill = NULL, 
              color = NULL, 
              title = plottitle, 
@@ -1276,9 +1288,20 @@ shinyServer(function(input, output, session) {
       taglst <-  tagList(
         tags$html(HTML('
 <h2 id = "saavutettavuus">Saavutettavuusseloste</h2>
-<p>Tämä saavutettavuusseloste koskee Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelua. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
+<p>Tämä saavutettavuusseloste koskee Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelua. Seloste on laadittu 9.4.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
 <h3>Miten saavutettava verkkopalvelu on?</h3>
-<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää kriittiset saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+
+<h3>Sisällöt, jotka eivät ole saavutettavia</h3>
+<p>Käyttäjät saattavat edelleen kohdata sivustolla joitakin saavutettavuusongelmia. 
+Seuraavana on luettelo ongelmista, jotka ovat tiedossamme. 
+Jos huomaat sivustolla ongelman, joka ei ole luettelossa, ilmoitathan siitä meille.</p>
+<p>Sisällöt tai toiminnot, jotka eivät ole vielä täysin saavutettavia:</p>
+<ul>
+<li>Sovelluksen piirtämän kuvan tekstivastine on puutteellinen. (WCAG 1.1.1)</li>
+</ul>
+<p>Korjaamme yllä listatut puutteet kevään 2021 aikana.</p>
+
 <h3>Anna palautetta saavutettavuudesta</h3>
 <ul>
 <li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
@@ -1301,51 +1324,72 @@ puhelinnumero vaihde 0295 016 000</p>
       taglst <-  tagList(
         tags$html(HTML('
 <h2 id = "saavutettavuus">Accessibility statement</h2>
-<p>This is accessibility statement for Purchased prescription medicines in Finland -web application. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
-<h3>Miten saavutettava verkkopalvelu on?</h3>
-<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
-<h3>Anna palautetta saavutettavuudesta</h3>
+<p>This is accessibility statement for Purchased prescription medicines in Finland -web application. 
+Seloste on laadittu 9.4.2021. The assessment was carried out by Kela.</p>
+
+<p>Purchased prescription medicines in Finland -web application was update in Spring 2021. 
+Our application meets the critical A and AA level accessibility criteria (WCAG criteria 2.1).</p>
+
+<h3>Parts of the content that are not accessible</h3>
+<p>Users may still encounter some accessibility issues on the website. The known issues are listed below. 
+If you encounter a website issue not listed below, please tell us about it.</p>
+<p>Content and functions not yet fully accessible:</p>
 <ul>
-<li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
+<li>The text alternative for the image created by application is not sufficient. (WCAG 1.1.1)</li>
 </ul>
-<p>Saavutettavuuspalautteet Kelassa vastaanottaa Kelan tekninen tuki.</p>
-<h3>Saavutettavuuden valvonta</h3>
-<p>Jos huomaat sivustolla saavutettavuuteen liittyviä ongelmia, anna ensin palautetta meille. Vastaamme 2 viikon sisällä.</p>
-<p>Jos et ole tyytyväinen saamaasi vastaukseen tai jos et saa vastausta 2 viikon aikana, <a href="https://www.saavutettavuusvaatimukset.fi/oikeutesi/">voit tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon</a>. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten voit tehdä ilmoituksen ja miten asia käsitellään.</p>
-<h3>Valvontaviranomaisen yhteystiedot</h3>
-<p><strong>Etelä-Suomen aluehallintovirasto</strong><br>
-Saavutettavuuden valvonnan yksikkö<br>
-<a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi&nbsp;</a><br>
-saavutettavuus(at)avi.fi<br>
-puhelinnumero vaihde 0295 016 000</p>
-<h3>Teemme jatkuvasti työtä saavutettavuuden parantamiseksi</h3>
-<p>Olemme sitoutuneet parantamaan verkkopalveluiden saavutettavuutta. Päivitämme tätä selostetta sitä mukaa kuin korjaamme puutteita.</p>
-                       '))
+<p>We will correct the shortcomings listed above in spring 2021.</p>
+
+<h3>Give us feedback on the accessibility</h3>
+<p>Did you find an accessibility issue in our service? Please let us know about it, and we will do our best to correct it.</p>
+<p>To give feedback on the accessibility, please use the</p>
+<ul>
+<li><a href="https://beta.kela.fi/saavutettavuuspalaute" target="_blank">online form (Opens in a new tab)</a></li>
+</ul>
+<p>Feedback on the accessibility will be received and addressed by the Kela technical support.</p>
+<h3>Accessibility monitoring</h3>
+<p>If you notice any accessibility issues on the website, please send feedback to us first. We will respond within two weeks.</p>
+<p>If you are not satisfied with the response you have received or do not receive a response within two weeks,<a href="https://www.eu-healthcare.fi/recommends/saavutettavuusvaatimukset-aluehallintovirasto/" data-eafl-id="917192" class="eafl-link eafl-link-text eafl-link-cloaked" target="_blank"> you may file a report with the Regional State Administrative Agency for Southern Finland (site in Finnish and Swedish only)<span class="screen-reader-text"> (Opens in a new tab)</span><span class="icon-ext-link" aria-hidden="true"></span></a>. The website of the Regional State Administrative Agency for Southern Finland provides detailed information on how to file a report and how the matter will be processed.</p>
+<h4>Contact information for the supervisory authority:</h4>
+<p>Regional State Administrative Agency for Southern Finland<br>
+Accessibility monitoring unit<br>
+<a href="https://www.eu-healthcare.fi/recommends/saavutettavuusvaatimukset-aluehallintovirasto/" data-eafl-id="917192" class="eafl-link eafl-link-text eafl-link-cloaked" target="_blank">www.saavutettavuusvaatimukset.fi (Opens in a new tab)</a><br>
+saavutettavuus@avi.fi<br>
+Telephone (switchboard): +358 295 016 000</p>
+'))
       )
     } else if (lang == "sv"){
       
       taglst <-  tagList(
         tags$html(HTML('
 <h2 id = "saavutettavuus">Tillgänglighetsutlåtande</h2>
-<p>Den är tillgänglighetsutlåtande för webbplatsen Receptbelagda läkemedel enligt ATC-systemet. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
-<h3>Miten saavutettava verkkopalvelu on?</h3>
-<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
-<h3>Anna palautetta saavutettavuudesta</h3>
+<p>Detta tillgänglighetsutlåtande gäller för webbplatsen Receptbelagda läkemedel enligt ATC-systemet. 
+Utlåtandet beskriver situationen per den 9.4.2021. Bedömningen har gjorts av Fpa.</p>
+
+<h3>Otillgängliga innehåll</h3>
+<p>Användarna kan fortfarande stöta på vissa tillgänglighetsproblem på webbplatsen. Nedan följer en lista över de problem som vi har vetskap om. Om du upptäcker ett problem på webbplatsen, som inte finns med på listan, vänligen meddela oss om detta.</p>
+<p>Innehåll eller funktioner vars tillgänglighet ännu är begränsad:</p>
 <ul>
-<li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
+<li>Bilden saknas rätt textalternativ. (WCAG 1.1.1)</li>
 </ul>
-<p>Saavutettavuuspalautteet Kelassa vastaanottaa Kelan tekninen tuki.</p>
-<h3>Saavutettavuuden valvonta</h3>
-<p>Jos huomaat sivustolla saavutettavuuteen liittyviä ongelmia, anna ensin palautetta meille. Vastaamme 2 viikon sisällä.</p>
-<p>Jos et ole tyytyväinen saamaasi vastaukseen tai jos et saa vastausta 2 viikon aikana, <a href="https://www.saavutettavuusvaatimukset.fi/oikeutesi/">voit tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon</a>. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten voit tehdä ilmoituksen ja miten asia käsitellään.</p>
-<h3>Valvontaviranomaisen yhteystiedot</h3>
-<p><strong>Etelä-Suomen aluehallintovirasto</strong><br>
-Saavutettavuuden valvonnan yksikkö<br>
-<a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi&nbsp;</a><br>
-saavutettavuus(at)avi.fi<br>
-puhelinnumero vaihde 0295 016 000</p>
-<h3>Teemme jatkuvasti työtä saavutettavuuden parantamiseksi</h3>
-<p>Olemme sitoutuneet parantamaan verkkopalveluiden saavutettavuutta. Päivitämme tätä selostetta sitä mukaa kuin korjaamme puutteita.</p>
+<p>Vi åtgärdar de ovan nämnda bristerna under våren 2021.</p>
+
+<h3>Ge oss respons på tillgängligheten</h3>
+<p>Upptäckte du någon brist i tjänstens tillgänglighet? Låt oss veta om det så gör vi vårt bästa för att åtgärda bristen.</p>
+<p>Ge oss respons på tillgängligheten</p>
+<ul>
+<li><a href="https://beta.kela.fi/saavutettavuuspalaute" target="_blank">med webbformuläret  (öppnas i en ny flik)</a></li>
+</ul>
+<p>Tillgänglighetsrespons till FPA tas emot av den tekniska supporten.</p>
+<h3>Tillsyn av tillgängligheten</h3>
+<p>Om du upptäcker problem med webbplatsens tillgänglighet, börja med att skicka respons till oss. Vi svarar inom två veckor.</p>
+<p>Om du inte är nöjd med svaret som du fått eller om du inte får något svar alls inom två veckor <a href="https://www.eu-halsovard.fi/recommends/tillganglighetskrav-regionforvaltningsverket/" data-eafl-id="917194" class="eafl-link eafl-link-text eafl-link-cloaked" target="_blank">kan du göra en anmälan till regionförvaltningsverket i Södra Finland<span class="screen-reader-text"> (öppnas i en ny flik)</span><span class="icon-ext-link" aria-hidden="true"></span></a>. På regionförvaltningsverket i Södra Finlands webbplats finns exakta anvisningar om hur du gör en anmälan och hur ärendet hanteras.</p>
+<h4>Kontaktuppgifter till tillsynsmyndigheten:</h4>
+<p>Regionförvaltningsverket i Södra Finland<br>
+Enheten för tillgänglighetstillsyn<br>
+<a href="https://www.eu-halsovard.fi/recommends/tillganglighetskrav-regionforvaltningsverket/" target="_blank">www.tillganglighetskrav.fi  (öppnas i en ny flik) </a><br>
+saavutettavuus@avi.fi<br>
+Telefon växel: 0295 016 000</p>
+
 '))
       )
     }
