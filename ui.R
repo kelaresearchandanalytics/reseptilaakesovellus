@@ -9,7 +9,7 @@ i18n$set_translation_language('fi')
 
 shinyUI(fluidPage(lang = "fi",
           title = "Reseptilääkkeiden ostot ATC-luokittain",
-          # shiny.i18n::usei18n(i18n),
+          shiny.i18n::usei18n(i18n),
           theme = bslib::bs_theme(),
           includeCSS("www/styles.css"),
           
