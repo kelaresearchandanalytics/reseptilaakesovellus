@@ -53,12 +53,12 @@ shinyUI(fluidPage(lang = "fi",
             column(width = 2,
                    uiOutput("ui_download_svg"))
           ),
-          tags$hr()#,
-          # shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
-          # tags$hr(),
-          # fluidRow(column(8,
-          #                 uiOutput("ui_about_app"),
-          #                 tags$hr(),
-          #                 uiOutput("ui_accessibility_statement")
-          #                 ))
+          tags$hr(),
+          shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
+          tags$hr(),
+          fluidRow(column(8,
+                          uiOutput("ui_about_app"),
+                          tags$hr(),
+                          uiOutput("ui_accessibility_statement")
+                          ))
 ))
