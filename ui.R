@@ -33,12 +33,9 @@ shinyUI(fluidPage(lang = "fi",
                    uiOutput("inputs_atc4"),
                    uiOutput("inputs_atc5")),
             column(4, 
-                   uiOutput("inputs_region_level"))#,
-            # column(3,
-            # uiOutput("ui_language_selection"))
+                   uiOutput("inputs_region_level")),
           ),
           # fluidRow(
-          # column(9,   uiOutput("inputs_varname")),
           # column(3,   uiOutput("ui_bookmark"))
           # ),
           fluidRow(
