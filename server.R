@@ -19,11 +19,9 @@ shinyServer(function(input, output, session) {
     )
   })
   
-  output$ui_text_title <- renderUI({
+  output$ui_text_title <- renderText({
     req(input$selected_language)
-    tagList(
       i18n$t("Reseptilääkkeiden ostot ATC-luokittain")
-    )
   })
   
   output$ui_text_sidebartitle <- renderUI({
@@ -815,7 +813,7 @@ shinyServer(function(input, output, session) {
           scale_y_continuous(labels = function(x) format(x, big.mark = " ",
                                                          scientific = FALSE),
                              limits = c(0,NA)) +
-          scale_x_continuous(breaks = (1:max(datplot2$viikko))[is.even(1:max(datplot2$viikko))], 
+          scale_x_continuous(breaks = breaksit, 
                              limits = c(1,max(datplot2$viikko)))
         
         datplot2 <- datplot2 %>% group_by(vuosi) %>% mutate(cumarvo = cumsum(arvo))
@@ -916,11 +914,39 @@ shinyServer(function(input, output, session) {
     }
     return(p)
   }
+
   
+  create_plot_alt_text <- function(varname){
+    
+    
+    dat_plot_list <- create_plot_data()
+    
+    if (varname == "var_kustannus"){
+      plot_subtitle <- i18n$t("Apteekkien välityksellä korvattujen, tarkastelujakson aikana ostettujen lääkkeiden kustannukset. Kustannuksella tarkoitetaan lääkkeen hinnasta ja apteekin toimitusmaksusta koostuvaa summaa, josta ei ole vielä vähennetty sairausvakuutuskorvausta")
+      plot_ytitle <- paste(i18n$t("Kustannukset"), "€")
+    } else if (varname == "var_n_henkilot"){
+      plot_subtitle <- i18n$t("Niiden henkilöiden lukumäärät, jotka ovat tarkastelujakson aikana ostaneet lääkkeitä. Nämä lääkeostot on joko korvattu apteekeissa tai niiden kustannukset ovat jääneet alle 50 euron omavastuun, jolloin ostot ovat vain kerryttäneet omavastuuta\n\nOstajien kumulatiivinen kokonaismäärä muodostetaan viikoittain määriteltyjen eri ostajien lukumäärien summana. Koska sama henkilö voi olla ostanut lääkettä useammalla eri viikolla, ei ostajien kumulatiivinen kokonaismäärä vastaa eri ostajien määrää")
+      plot_ytitle <-i18n$t("Ostajien määrät")
+    } else if (varname == "var_n_ostot"){
+      plot_subtitle <- i18n$t("Ostolla tarkoitetaan yhdellä kertaa apteekista toimitettua tietyn lääkevalmisteen erää. Vuodeksi määrätty lääkevalmiste kirjautuu tilastoon yleensä useana ostona, koska potilas noutaa lääkkeensä tavallisesti kolmen kuukauden välein")
+      plot_ytitle <-i18n$t("Ostomäärät")
+    }
+    
+    # Lisätään vielä huomio skaaloista
+    scale_note <- i18n$t("\n\nJokaisen paneelin ylempi kuva näyttää viikottaiset määrät ja alempi kertymän vuoden alusta (huomaa vaihtelevat y-akselit)")
+
+    datplot <- dat_plot_list[["datplot"]]
+
+    atcs <- unique(datplot$atc_selite)
+    alt_teksti <- glue("{plot_subtitle}. Kuvan aluetaso on {input$value_region} ja tiedot ovat viikkotasolla vuosilta 2019-2021. Mukana ovat seuraavien ATC-luokkien lääkeaineet: {glue::glue_collapse(atcs, sep = ', ', last = ' ja ')}")
+    return(alt_teksti)
+  }
+    
   
   output$plot_main <- renderPlot({
     create_plot(input$value_varname)
-  })
+  }, alt = reactive({create_plot_alt_text(input$value_varname)}) )
+  
   output$plot_main_ui <- renderUI({
     
     req(input$selected_language)
@@ -1073,8 +1099,7 @@ shinyServer(function(input, output, session) {
         tags$html(HTML('
     <a class="sr-only sr-only-focusable" href="#content">Siirry sisältöön</a>
 
-    <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-    <!--div class="container"-->
+    <nav class="navbar navbar-kela bg-kela navbar-light">
       <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
@@ -1092,17 +1117,15 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-    <!--/div-->
   </nav>'))
       )
     } else if (lang == "en"){
       
       taglst <-  tagList(
         tags$html(HTML('
-    <a class="sr-only sr-only-focusable" href="#content">Siirry sisältöön</a>
+    <a class="sr-only sr-only-focusable" href="#content">Jump to content</a>
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-    <!--div class="container"-->
       <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
@@ -1120,17 +1143,15 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-    <!--/div-->
   </nav>'))
       )
     } else if (lang == "sv"){
       
       taglst <-  tagList(
         tags$html(HTML('
-    <a class="sr-only sr-only-focusable" href="#content">Siirry sisältöön</a>
+    <a class="sr-only sr-only-focusable" href="#content">Jump to content</a>
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-    <!--div class="container"-->
       <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
@@ -1148,7 +1169,6 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-    <!--/div-->
   </nav>'))      )
     }
     
@@ -1174,7 +1194,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$h1("Reseptilääkkeiden ostot ATC-luokittain", id = "ohje"), 
-        tags$p("Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuosien 2019 ja 2020 välillä ATC-luokituksen tasoilla 1-5. Tiedot perustuvat apteekkien päivittäin Kelaan toimittamiin ostotietoihin. Aineistosta on poistettu ne lääkeaineet, joita on yhtenä tai useampana viikkona ostanut alle 10 henkilöä."),
+        tags$p("Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuosien 2019-2021 välillä ATC-luokituksen tasoilla 1-5. Tiedot perustuvat apteekkien päivittäin Kelaan toimittamiin ostotietoihin. Aineistosta on poistettu ne lääkeaineet, joita on yhtenä tai useampana viikkona ostanut alle 10 henkilöä."),
         tags$h2("Näin käytät sovellusta"),
         tags$p("Alkunäkymässä on kaikkien ATC-luokkien yhteenlasketut tiedot.",tags$br(),
                "Sovelluksessa on kaksi hakuvaihtoehtoa: ",tags$strong("valikkohaku"),"ja",tags$strong("tekstihaku."), "Valikkohaku etenee hierkkisesti ATC-tasoja ylhäältä alas. Tekstihaussa voit hakea yhdellä tai useammalla hakutermillä kaikilta ATC-tasoilta. Molemmissa hakutyypeissä voit valita tarkasteluun yhden tai useamman luokan.",
@@ -1186,7 +1206,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$h1("Purchased prescription medicines in Finland", id = "ohje"),
-        tags$p("This application provides information on reimbursable prescription medicines in terms of costs, number of purchases and number of patients on a weekly basis in 2019 and 2020. Medicines are classified in groups at five levels of the ATC-classification system. Information is based on daily data provided by Finnish community pharmacies. ATC groups including less than 10 patients in one or more weeks have been removed from the data."),
+        tags$p("This application provides information on reimbursable prescription medicines in terms of costs, number of purchases and number of patients on a weekly basis in 2019-2021. Medicines are classified in groups at five levels of the ATC-classification system. Information is based on daily data provided by Finnish community pharmacies. ATC groups including less than 10 patients in one or more weeks have been removed from the data."),
         tags$h2("Instructions"),
         tags$p("Results including all ATC groups are shown combined on a start screen.",tags$br(),
                "There are two search options: hierarchical ",tags$strong("menu search"),"and text-based",tags$strong("text search."), "One or multiple ATC groups may be chosen at the same time.",
@@ -1198,7 +1218,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$h1("Receptbelagda läkemedel enligt ATC-systemet", id = "ohje"),
-        tags$p("Rapporter innehåller veckoliga kostnaderna och antalet inköp av läkemedel som har ersatts på apoteken, och antal personer som har köpt dessa läkemedel i 2019 och 2020. Läkemedel klassificeras enligt ATC-systemet i fem olika nivåer. Data kommer från apotek. Rapporten innehåller inte läkemedelsgrupper som bestått av färre än 10 personer i någon vecka."),
+        tags$p("Rapporter innehåller veckoliga kostnaderna och antalet inköp av läkemedel som har ersatts på apoteken, och antal personer som har köpt dessa läkemedel i 2019-2021. Läkemedel klassificeras enligt ATC-systemet i fem olika nivåer. Data kommer från apotek. Rapporten innehåller inte läkemedelsgrupper som bestått av färre än 10 personer i någon vecka."),
         tags$h2("Så här använder du applikationen"),
         tags$p("På startsidan finns alla ATC grupper tillsammans.",tags$br(),
                "Du kan använda två olika sökalternativ: hierarkisk ",tags$strong("meny sök"),"och textbaserad",tags$strong("text sök,"), " och välja en eller flera läkemedelsgrupper samtidigt.",

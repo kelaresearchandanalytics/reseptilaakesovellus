@@ -8,8 +8,8 @@ i18n$set_translation_language('fi')
 
 
 shinyUI(fluidPage(lang = "fi",
-          title = "Sovellukset title",
-          shiny.i18n::usei18n(i18n),
+          title = "Reseptilääkkeiden ostot ATC-luokittain",
+          # shiny.i18n::usei18n(i18n),
           theme = bslib::bs_theme(),
           includeCSS("www/styles.css"),
           
@@ -53,12 +53,12 @@ shinyUI(fluidPage(lang = "fi",
             column(width = 2,
                    uiOutput("ui_download_svg"))
           ),
-          tags$hr(),
-          shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
-          tags$hr(),
-          fluidRow(column(8,
-                          uiOutput("ui_about_app"),
-                          tags$hr(),
-                          uiOutput("ui_accessibility_statement")
-                          ))
+          tags$hr()#,
+          # shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
+          # tags$hr(),
+          # fluidRow(column(8,
+          #                 uiOutput("ui_about_app"),
+          #                 tags$hr(),
+          #                 uiOutput("ui_accessibility_statement")
+          #                 ))
 ))
