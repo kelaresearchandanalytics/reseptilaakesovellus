@@ -54,7 +54,11 @@ shinyUI(fluidPage(lang = "fi",
                    uiOutput("ui_download_svg"))
           ),
           tags$hr(),
-          shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
-          tags$h2("Lisätietoja", id = "info"),
-          tags$h2("Saavutettavuusseloste", id = "saavutettavuus")
+          # shinycssloaders::withSpinner(uiOutput("plot_main_ui")),
+          tags$hr(),
+          fluidRow(column(8,
+                          uiOutput("ui_about_app"),
+                          tags$hr(),
+                          uiOutput("ui_accessibility_statement")
+                          ))
 ))

@@ -705,9 +705,9 @@ shinyServer(function(input, output, session) {
     
     # Sairaahoitopiirien nimikäännökset geofacettiin
     
-    shpt <- structure(list(code = c("09", "15", "10", "25", "11", "19", "05", 
-                                    "17", "14", "08", "21", "20", "06", "12", "18", "13", "07", "04", 
-                                    "16", "03", "00"), name_fi = c("Etelä-Karjalan SHP", "Etelä-Pohjanmaan SHP", 
+    shpt <- structure(list(code = c("9", "15", "10", "25", "11", "19", "5", 
+                                    "17", "14", "8", "21", "20", "6", "12", "18", "13", "7", "4", 
+                                    "16", "3", "0"), name_fi = c("Etelä-Karjalan SHP", "Etelä-Pohjanmaan SHP", 
                                                                    "Etelä-Savon SHP", "Helsingin ja Uudenmaan SHP", "Itä-Savon SHP", 
                                                                    "Kainuun SHP", "Kanta-Hämeen SHP", "Keski-Pohjanmaan SHP", "Keski-Suomen SHP", 
                                                                    "Kymenlaakson SHP", "Lapin SHP", "Länsi-Pohjan SHP", "Pirkanmaan SHP", 
@@ -731,7 +731,9 @@ shinyServer(function(input, output, session) {
                                                                                                                                               "Vaasa Hospital District", "Southwest Finland Hospital District", 
                                                                                                                                               "Åland")), row.names = c(NA, -21L), class = c("tbl_df", "tbl", 
                                                                                                                                                                                             "data.frame"))
-    grid_geo <- left_join(geofi::grid_sairaanhoitop,shpt %>% mutate(code = as.character(as.integer(code))))
+    grid_geo <- left_join(geofi::grid_sairaanhoitop %>% mutate(code = as.character(as.integer(code))), 
+                          shpt %>% mutate(code = as.character(as.integer(code)))) %>% 
+      filter(!is.na(name_fi))
     
     
     dat_plot_list <- create_plot_data()
@@ -927,6 +929,7 @@ shinyServer(function(input, output, session) {
   
   
   output$ui_download_csv <- renderUI({
+    req(input$selected_language)
     tagList(
       downloadButton("download_csv", i18n$t("Lataa .csv-data"))
     )
@@ -946,18 +949,21 @@ shinyServer(function(input, output, session) {
   
   
   output$ui_download_pdf <- renderUI({
+    req(input$selected_language)
     tagList(
       downloadButton("download_pdf", i18n$t("Lataa .pdf-kuva"))
     )
   })
   
   output$ui_download_png <- renderUI({
+    req(input$selected_language)
     tagList(
       downloadButton("download_png", i18n$t("Lataa .png-kuva"))
     )
   })
   
   output$ui_download_svg <- renderUI({
+    req(input$selected_language)
     tagList(
       downloadButton("download_svg", i18n$t("Lataa .svg-kuva"))
     )
@@ -1057,7 +1063,7 @@ shinyServer(function(input, output, session) {
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
     <!--div class="container"-->
-      <a class="navbar-brand" role="banner" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
+      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -1067,7 +1073,7 @@ shinyServer(function(input, output, session) {
             <a class="nav-link" href="#ohje">Ohjeet</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#info">Lisätietoja</a>
+            <a class="nav-link" href="#info">Lähdekoodi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#saavutettavuus">Saavutettavuusseloste</a>
@@ -1085,17 +1091,17 @@ shinyServer(function(input, output, session) {
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
     <!--div class="container"-->
-      <a class="navbar-brand" role="banner" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
+      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#ohjeet">Instruction</a>
+            <a class="nav-link" href="#ohjeet">Instructions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#info">Information</a>
+            <a class="nav-link" href="#info">Source code</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#saavutettavuus">Accessibility </a>
@@ -1113,7 +1119,7 @@ shinyServer(function(input, output, session) {
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
     <!--div class="container"-->
-      <a class="navbar-brand" role="banner" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
+      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -1123,7 +1129,7 @@ shinyServer(function(input, output, session) {
             <a class="nav-link" href="#ohje">Instruktioner</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#info">Information</a>
+            <a class="nav-link" href="#info">Källkod</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#saavutettavuus">Tillgänglighet</a>
@@ -1246,7 +1252,7 @@ shinyServer(function(input, output, session) {
                                  "Läs mer: ATC-kod, Fimea",
                                  target="_blank", class = "btn btn-secondary")
                  ))
-      )                  
+      )
     }
     
     return(taglst) 
@@ -1262,5 +1268,217 @@ shinyServer(function(input, output, session) {
     )
   })
   
+  create_accessibility_statement <- function(lang){
+    
+    
+    if (lang == "fi"){
+      
+      taglst <-  tagList(
+        tags$html(HTML('
+<h2 id = "saavutettavuus">Saavutettavuusseloste</h2>
+<p>Tämä saavutettavuusseloste koskee Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelua. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
+<h3>Miten saavutettava verkkopalvelu on?</h3>
+<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+<h3>Anna palautetta saavutettavuudesta</h3>
+<ul>
+<li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
+</ul>
+<p>Saavutettavuuspalautteet Kelassa vastaanottaa Kelan tekninen tuki.</p>
+<h3>Saavutettavuuden valvonta</h3>
+<p>Jos huomaat sivustolla saavutettavuuteen liittyviä ongelmia, anna ensin palautetta meille. Vastaamme 2 viikon sisällä.</p>
+<p>Jos et ole tyytyväinen saamaasi vastaukseen tai jos et saa vastausta 2 viikon aikana, <a href="https://www.saavutettavuusvaatimukset.fi/oikeutesi/">voit tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon</a>. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten voit tehdä ilmoituksen ja miten asia käsitellään.</p>
+<h3>Valvontaviranomaisen yhteystiedot</h3>
+<p><strong>Etelä-Suomen aluehallintovirasto</strong><br>
+Saavutettavuuden valvonnan yksikkö<br>
+<a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi&nbsp;</a><br>
+saavutettavuus(at)avi.fi<br>
+puhelinnumero vaihde 0295 016 000</p>
+<h3>Teemme jatkuvasti työtä saavutettavuuden parantamiseksi</h3>
+<p>Olemme sitoutuneet parantamaan verkkopalveluiden saavutettavuutta. Päivitämme tätä selostetta sitä mukaa kuin korjaamme puutteita.</p>
+'))
+      )    } else if (lang == "en"){
+      
+      taglst <-  tagList(
+        tags$html(HTML('
+<h2 id = "saavutettavuus">Accessibility statement</h2>
+<p>This is accessibility statement for Purchased prescription medicines in Finland -web application. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
+<h3>Miten saavutettava verkkopalvelu on?</h3>
+<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+<h3>Anna palautetta saavutettavuudesta</h3>
+<ul>
+<li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
+</ul>
+<p>Saavutettavuuspalautteet Kelassa vastaanottaa Kelan tekninen tuki.</p>
+<h3>Saavutettavuuden valvonta</h3>
+<p>Jos huomaat sivustolla saavutettavuuteen liittyviä ongelmia, anna ensin palautetta meille. Vastaamme 2 viikon sisällä.</p>
+<p>Jos et ole tyytyväinen saamaasi vastaukseen tai jos et saa vastausta 2 viikon aikana, <a href="https://www.saavutettavuusvaatimukset.fi/oikeutesi/">voit tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon</a>. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten voit tehdä ilmoituksen ja miten asia käsitellään.</p>
+<h3>Valvontaviranomaisen yhteystiedot</h3>
+<p><strong>Etelä-Suomen aluehallintovirasto</strong><br>
+Saavutettavuuden valvonnan yksikkö<br>
+<a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi&nbsp;</a><br>
+saavutettavuus(at)avi.fi<br>
+puhelinnumero vaihde 0295 016 000</p>
+<h3>Teemme jatkuvasti työtä saavutettavuuden parantamiseksi</h3>
+<p>Olemme sitoutuneet parantamaan verkkopalveluiden saavutettavuutta. Päivitämme tätä selostetta sitä mukaa kuin korjaamme puutteita.</p>
+                       '))
+      )
+    } else if (lang == "sv"){
+      
+      taglst <-  tagList(
+        tags$html(HTML('
+<h2 id = "saavutettavuus">Tillgänglighetsutlåtande</h2>
+<p>Den är tillgänglighetsutlåtande för webbplatsen Receptbelagda läkemedel enligt ATC-systemet. Seloste on laadittu 22.2.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
+<h3>Miten saavutettava verkkopalvelu on?</h3>
+<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+<h3>Anna palautetta saavutettavuudesta</h3>
+<ul>
+<li><a href="https://beta.kela.fi/saavutettavuuspalaute">verkkolomakkeella.</a></li>
+</ul>
+<p>Saavutettavuuspalautteet Kelassa vastaanottaa Kelan tekninen tuki.</p>
+<h3>Saavutettavuuden valvonta</h3>
+<p>Jos huomaat sivustolla saavutettavuuteen liittyviä ongelmia, anna ensin palautetta meille. Vastaamme 2 viikon sisällä.</p>
+<p>Jos et ole tyytyväinen saamaasi vastaukseen tai jos et saa vastausta 2 viikon aikana, <a href="https://www.saavutettavuusvaatimukset.fi/oikeutesi/">voit tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon</a>. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten voit tehdä ilmoituksen ja miten asia käsitellään.</p>
+<h3>Valvontaviranomaisen yhteystiedot</h3>
+<p><strong>Etelä-Suomen aluehallintovirasto</strong><br>
+Saavutettavuuden valvonnan yksikkö<br>
+<a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi&nbsp;</a><br>
+saavutettavuus(at)avi.fi<br>
+puhelinnumero vaihde 0295 016 000</p>
+<h3>Teemme jatkuvasti työtä saavutettavuuden parantamiseksi</h3>
+<p>Olemme sitoutuneet parantamaan verkkopalveluiden saavutettavuutta. Päivitämme tätä selostetta sitä mukaa kuin korjaamme puutteita.</p>
+'))
+      )
+    }
+    return(taglst) 
+  }
+  
+  output$ui_accessibility_statement <- renderUI({
+    
+    req(input$selected_language)
+    
+    taglst <- create_accessibility_statement(lang = input$selected_language)
+    tagList(
+      taglst
+    )
+  })
+  
+  
+  create_about_app <- function(lang){
+    
+    if (lang == "fi"){
+      
+      taglst <-  tagList(
+        tags$h2("Lähdekoodi", id = "info"),
+        tags$html(HTML('
+<strong>Reseptilääkkeiden ostot ATC-luokittain -verkkosovellus</strong>
+<p>Sovellusversio
+<code>0.5.0</code><br/>
+</p>
+<p>Tämä verkkosovellus on tehty
+<a href="https://www.r-project.org/">R</a>-kielellä
+<a href="https://shiny.rstudio.com">Shiny</a>-kirjaston avulla. 
+Sovelluksen lähdekoodi on avoimesti lisensöity ja saatavilla 
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app">Github</a>-palvelusta.</p>
+
+<p>Mikäli löysit sovelluksesta bugin tai sinulla on idea tai toteutus uudesta ominaisuudesta voit:</p>
+<ul>
+<li>
+toteuttaa ominaisuuden/korjauksen ja jättää
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app/pulls">pull requestin</a>Github-palvelussa,
+</li>
+<li>
+avata uuden <a href="https://github.com/kelaresearchandanalytics/korona_atc_app/issues">issuen</a> Github-palvelussa 
+ja kuvata bugin/ominaisuuden siinä tai
+</li>
+<li>
+laittaa meiliä osoitteeseen 
+<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+</li>
+</ul>
+'))
+        
+        
+        
+      )
+    } else if (lang == "en"){
+      
+      taglst <-  tagList(
+        tags$h2("Source code", id = "info"),
+        tags$html(HTML('
+<strong>Purchased prescription medicines in Finland -web application</strong>
+<p>Version
+<code>0.5.0</code><br/>
+</p>
+<p>This applications is written using
+<a href="https://www.r-project.org/">R</a>-language with 
+<a href="https://shiny.rstudio.com">Shiny</a>-library. 
+Source code is available free and open at 
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app">Github</a>.</p>
+
+<p>If you encoutered a bug or would like a new feature, please:</p>
+<ul>
+<li>
+implementent the fix and leave
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app/pulls">pull request</a> at Github,
+</li>
+<li>
+create a <a href="https://github.com/kelaresearchandanalytics/korona_atc_app/issues">issue</a> at Github 
+and describe the bug/feature in it
+</li>
+<li>
+send email to
+<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+</li>
+</ul>
+'))
+      )
+    } else if (lang == "sv"){
+      
+      taglst <-  tagList(
+        tags$h2("Källkod", id = "info"),
+        tags$html(HTML('
+<strong>Receptbelagda läkemedel enligt ATC-systemet -webbapplikation</strong>
+<p>Version
+<code>0.5.0</code><br/>
+</p>
+<p>This applications is written using
+<a href="https://www.r-project.org/">R</a>-language with 
+<a href="https://shiny.rstudio.com">Shiny</a>-library. 
+Source code is available free and open at 
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app">Github</a>.</p>
+
+<p>If you encoutered a bug or would like a new feature, please:</p>
+<ul>
+<li>
+implementent the fix and leave
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app/pulls">pull request</a> at Github,
+</li>
+<li>
+create a <a href="https://github.com/kelaresearchandanalytics/korona_atc_app/issues">issue</a> at Github 
+and describe the bug/feature in it
+</li>
+<li>
+send email to
+<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+</li>
+</ul>
+'))
+      )
+    }
+    return(taglst) 
+  }
+  
+  output$ui_about_app <- renderUI({
+    
+    req(input$selected_language)
+    
+    taglst <- create_about_app(lang = input$selected_language)
+    tagList(
+      taglst
+    )
+  })
+  
 }
 )
+
+
