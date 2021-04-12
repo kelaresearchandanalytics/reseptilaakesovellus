@@ -1022,12 +1022,12 @@ shinyServer(function(input, output, session) {
       if (input$value_region == "Koko Suomi"){
         height = 3 + ceiling(facet_n/2) * 5.2
       } else {
-        height = 16
-        width = 16
+        height = 18
+        width = 22
       }
       
-      if (TRUE) plot_varname <- "var_kustannus"
-       p1 <- create_plot(plot_varname)
+      # if (TRUE) plot_varname <- "var_kustannus"
+       p1 <- create_plot(input$value_varname)
       
       ggsave(file, plot = p1, device = "png", width = width, height = height, limitsize = FALSE, dpi = 90)
     }
@@ -1049,13 +1049,13 @@ shinyServer(function(input, output, session) {
       if (input$value_region == "Koko Suomi"){
         height = 3 + ceiling(facet_n/2) * 5.2
       } else {
-        height = 16
-        width = 16
+        height = 18
+        width = 22
       }
       
-      if (TRUE) plot_varname <- "var_kustannus"
+      # if (TRUE) plot_varname <- "var_kustannus"
       
-      p1 <- create_plot(plot_varname)
+      p1 <- create_plot(input$value_varname)
       ggsave(file, plot = p1, device = cairo_pdf, width = width, height = height, limitsize = FALSE)
     }
   )
@@ -1076,13 +1076,13 @@ shinyServer(function(input, output, session) {
       if (input$value_region == "Koko Suomi"){
         height = 3 + ceiling(facet_n/2) * 5.2
       } else {
-        height = 16
-        width = 16
+        height = 18
+        width = 22
       }
       
       if (TRUE) plot_varname <- "var_kustannus"
 
-      p1 <- create_plot(plot_varname)
+      p1 <- create_plot(input$value_varname)
       ggsave(file, plot = p1, #device = cairo_pdf, 
              width = width, height = height, limitsize = FALSE)
     }
