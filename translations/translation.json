@@ -1,9 +1,9 @@
 {
   "languages": ["fi", "en","sv"],
   "translation": [
-        {"fi": "kieli",
-         "en": "Language",
-         "sv": "Språk"
+        {"fi": "Valitse kieli",
+         "en": "Select language",
+         "sv": "Välj språk"
       },
        {"fi": "Reseptilääkkeiden ostot ATC-luokittain",
         "en": "Prescription medicines classified by ATC system",
@@ -13,9 +13,9 @@
         "en": "You can compare weekly costs, purchased amounts and the number of purchasers of reimbursable prescription medicines between 2019 and 2020 using ATC-classification in levels 1-5. The information is based on daily data (verbi) by pharmacies to Kela. (Lääkeaineet) with less than 10 purchasers in one or more weeks have been removed from the data.",
         "sv": "Voit verrata sairausvakuutuksesta... på Svenska"
       },
-      {"fi": "Hakutyyppi",
-        "en": "Search mode",
-        "sv": "Sökalternativ"
+      {"fi": "Valitse hakutyyppi",
+        "en": "Select search mode",
+        "sv": "Välj sökalternativ"
       },
       {"fi": "valikkohaku",
         "en": "menu search",
@@ -25,25 +25,25 @@
         "en": "text search",
         "sv": "text sök"
       },
-            {"fi": "ATC-luokka taso 1",
-            "en": "ATC level 1",
-        "sv": "ATC-nivå 1"
+            {"fi": "Valitse ATC-luokka taso 1",
+            "en": "Select ATC level 1",
+        "sv": "Välj ATC-nivå 1"
       },
-                  {"fi": "ATC-luokka taso 2",
-            "en": "ATC level 2",
-        "sv": "ATC-nivå 2"
+                  {"fi": "Valitse ATC-luokka taso 2",
+            "en": "Select ATC level 2",
+        "sv": "Välj ATC-nivå 2"
       },
-                  {"fi": "ATC-luokka taso 3",
-            "en": "ATC level 3",
-        "sv": "ATC-nivå 3"
+                  {"fi": "Valitse ATC-luokka taso 3",
+            "en": "Select ATC level 3",
+        "sv": "Välj ATC-nivå 3"
       },
-                  {"fi": "ATC-luokka taso 4",
-            "en": "ATC level 4",
-        "sv": "ATC-nivå 4"
+                  {"fi": "Valitse ATC-luokka taso 4",
+            "en": "Select ATC level 4",
+        "sv": "Välj ATC-nivå 4"
       },
-                  {"fi": "ATC-luokka taso 5",
-            "en": "ATC level 5",
-        "sv": "ATC-nivå 5"
+                  {"fi": "Valitse ATC-luokka taso 5",
+            "en": "Select ATC level 5",
+        "sv": "Välj ATC-nivå 5"
       },
       {"fi": "Rajaa ATC-luokka nimen/koodin perusteella (erota hakuehdot |-merkillä)",
         "en": "Search ATC group or active substance by name/ATC code (use |-character to separate search terms)",
@@ -69,9 +69,9 @@
         "en": "Nothing",
         "sv": "Ingenting"
       },
-            {"fi": "Aluetaso",
-        "en": "Regional level",
-        "sv": "Regional nivå"
+            {"fi": "Valitse aluetaso",
+        "en": "Select regional level",
+        "sv": "Välj regional nivå"
       },
             {"fi": "Koko Suomi",
         "en": "Whole Finland",

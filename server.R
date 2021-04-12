@@ -7,13 +7,13 @@ shinyServer(function(input, output, session) {
     update_lang(session, input$selected_language)
   })
   
-  
+
   ### inputit ----
   output$ui_language_selection <- renderUI({
     tagList(
       selectInput(inputId = 'selected_language',
-                  # label = i18n$t("kieli"),
-                  label = icon(name = "language", class = "ikoni"),
+                  label = "Valitse kieli / Select language / Välj språk",
+                  # label = icon(name = "language", class = "ikoni"),
                   choices = i18n$get_languages(),
                   selected = input$selected_language)
     )
@@ -102,7 +102,7 @@ shinyServer(function(input, output, session) {
     
     tagList(
       radioButtons(inputId = "value_search_type",
-                   label = i18n$t("Hakutyyppi"),
+                   label = i18n$t("Valitse hakutyyppi"),
                    choices = search_choices,
                    selected = search_choices[1])
     )
@@ -197,7 +197,7 @@ shinyServer(function(input, output, session) {
       tagList(
         # selectInput("value_atc_1", "ATC-taso 1", choices = values1, selected = NA) 
         pickerInput("value_atc_1",
-                    label = i18n$t("ATC-luokka taso 1"),
+                    label = i18n$t("Valitse ATC-luokka taso 1"),
                     choices = values1, 
                     width = "100%",
                     # selected = kela,
@@ -236,7 +236,7 @@ shinyServer(function(input, output, session) {
       tagList(
         # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA) 
         pickerInput("value_atc_2",
-                    label = i18n$t("ATC-luokka taso 2"),
+                    label = i18n$t("Valitse ATC-luokka taso 2"),
                     choices = values1, 
                     width = "100%",
                     # selected = kela,
@@ -275,7 +275,7 @@ shinyServer(function(input, output, session) {
       tagList(
         # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA) 
         pickerInput("value_atc_3",
-                    label = i18n$t("ATC-luokka taso 3"),
+                    label = i18n$t("Valitse ATC-luokka taso 3"),
                     choices = values1, 
                     width = "100%",
                     # selected = kela,
@@ -316,7 +316,7 @@ shinyServer(function(input, output, session) {
       tagList(
         # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA) 
         pickerInput("value_atc_4",
-                    label = i18n$t("ATC-luokka taso 4"),
+                    label = i18n$t("Valitse ATC-luokka taso 4"),
                     choices = values1, 
                     width = "100%",
                     # selected = kela,
@@ -359,7 +359,7 @@ shinyServer(function(input, output, session) {
       tagList(
         # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA) 
         pickerInput("value_atc_5",
-                    label = i18n$t("ATC-luokka taso 5"),
+                    label = i18n$t("Valitse ATC-luokka taso 5"),
                     choices = values1, 
                     width = "100%",
                     # selected = kela,
@@ -385,7 +385,7 @@ shinyServer(function(input, output, session) {
     
     tagList(
       selectInput(inputId = "value_region", 
-                  label = i18n$t("Aluetaso"),
+                  label = i18n$t("Valitse aluetaso"),
                   choices = regio_choices,
                   selected = regio_choices[1])
     )
@@ -1448,14 +1448,14 @@ Sovelluksen lähdekoodi on avoimesti lisensöity ja saatavilla
 <ul>
 <li>
 toteuttaa ominaisuuden/korjauksen ja jättää
-<a href="https://github.com/kelaresearchandanalytics/korona_atc_app/pulls">pull requestin</a>Github-palvelussa,
+<a href="https://github.com/kelaresearchandanalytics/korona_atc_app/pulls">pull requestin</a>  Github-palvelussa,
 </li>
 <li>
 avata uuden <a href="https://github.com/kelaresearchandanalytics/korona_atc_app/issues">issuen</a> Github-palvelussa 
 ja kuvata bugin/ominaisuuden siinä tai
 </li>
 <li>
-laittaa meiliä osoitteeseen 
+laittaa sähköpostia osoitteeseen 
 <a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
 </li>
 </ul>
