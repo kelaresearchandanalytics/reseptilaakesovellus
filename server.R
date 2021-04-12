@@ -1247,7 +1247,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$div(class = "card",
-                 tags$h5("ATC-luokitus", class = "card-header"),
+                 tags$strong("ATC-luokitus", class = "card-header lead"),
                  tags$div(class = "card-body",
                           
                           tags$p("ATC-luokituksessa luokituksessa lääkkeet on jaettu ryhmiin sen mukaan, mihin elimeen tai elinjärjestelmään ne vaikuttavat sekä niiden kemiallisten, farmakologisten ja terapeuttisten ominaisuuksien mukaan.", class = "card-text"),
@@ -1262,7 +1262,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$div(class = "card",
-                 tags$h5("ATC system", class = "card-header"),
+                 tags$strong("ATC system", class = "card-header lead"),
                  tags$div(class = "card-body",
                           
                           tags$p("In the Anatomical Therapeutic Chemical (ATC) classification, drugs are divided into groups according to which organ or organ system they affect and according to their chemical, pharmacological and therapeutic properties.", class = "card-text"),
@@ -1276,7 +1276,7 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$div(class = "card",
-                 tags$h5("ATC-systemet", class = "card-header"),
+                 tags$strong("ATC-systemet", class = "card-header lead"),
                  tags$div(class = "card-body",
                           tags$p("I klassificeringen Anatomical Therapeutic Chemical (ATC) är läkemedel uppdelade i grupper beroende på vilket organ eller organsystem de påverkar och enligt deras kemiska, enligt dess farmakologiska och terapeutiska egenskaper.", class = "card-text"),
                           tags$p("I ATC-systemet grupperas läkemedel i fem olika nivåer. Läkemedel är indelade i 14 huvudkategorier (Nivå 1) och upp till fyra nivåer. Av dessa är nivåer 2 och 3 terapeutiska / farmakologiska undergrupper, nivå 4 representerar antingen en farmakologisk, kemisk eller terapeutisk grupp, som läkemedlet tillhör och nivå 5 av en enda kemikalie eller kombinationsprodukt. I den andra, tredje och fjärde nivån används farmakologiska undergrupper för identifiering där det anses vara mer lämpligt än terapeutiska eller kemiska undergrupper.", class = "card-text"),
