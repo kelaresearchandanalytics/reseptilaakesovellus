@@ -21,7 +21,7 @@ shinyUI(fluidPage(lang = "fi",
               twitter_site = "@Kelantutkimus"
             ),
           shiny.i18n::usei18n(i18n),
-          theme = bslib::bs_theme(),
+          theme = bslib::bs_theme(primary = "#0f73a9"),
           includeCSS("www/styles.css"),
           
           uiOutput("ui_navigation"),
