@@ -938,7 +938,7 @@ shinyServer(function(input, output, session) {
     datplot <- dat_plot_list[["datplot"]]
 
     atcs <- unique(datplot$atc_selite)
-    alt_teksti <- glue("{plot_subtitle}. Kuvan aluetaso on {input$value_region} ja tiedot ovat viikkotasolla vuosilta 2019-2021. Mukana ovat seuraavien ATC-luokkien lääkeaineet: {glue::glue_collapse(atcs, sep = ', ', last = ' ja ')}")
+    alt_teksti <- glue("{plot_subtitle}.\n\n{i18n$t('Tiedot näytetään aluetasolla')} {i18n$t(input$value_region)}. {i18n$t('Tiedot ovat viikkotasolla vuosilta 2019-2021.')} \n\n{i18n$t('Mukana ovat seuraavien ATC-luokkien lääkeaineet')}: {glue::glue_collapse(atcs, sep = ', ')}")
     return(alt_teksti)
   }
     
@@ -1100,7 +1100,7 @@ shinyServer(function(input, output, session) {
     <a class="sr-only sr-only-focusable" href="#content">Siirry sisältöön</a>
 
     <nav class="navbar navbar-kela bg-kela navbar-light">
-      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
+      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -1126,8 +1126,8 @@ shinyServer(function(input, output, session) {
     <a class="sr-only sr-only-focusable" href="#content">Jump to content</a>
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
+      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Logo of Kela"></div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Open the menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
@@ -1149,11 +1149,11 @@ shinyServer(function(input, output, session) {
       
       taglst <-  tagList(
         tags$html(HTML('
-    <a class="sr-only sr-only-focusable" href="#content">Jump to content</a>
+    <a class="sr-only sr-only-focusable" href="#content">Hoppa till innehåll</a>
 
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-      <a class="navbar-brand" role="brand" href="#"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
+      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174554&t=1618232714508" style = "height: 35px; padding-right: 0px;" alt = "Logotyp för Fpa"></div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="öppna menyn">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">

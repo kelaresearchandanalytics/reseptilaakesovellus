@@ -174,7 +174,18 @@
        {"fi": "Valitse kuvan muuttuja",
         "en": "Select plot variable",
         "sv": "Välj variabel för grafen"
+       },
+       {"fi": "Tiedot näytetään aluetasolla",
+        "en": "Data is presented at regional level of the whole Finland",
+        "sv": "Uppgifter presenteras på regional nivå i"
+       },
+       {"fi": "Tiedot ovat viikkotasolla vuosilta 2019-2021.",
+        "en": "Data is presented weekly between 2019-2021.",
+        "sv": "Data presenteras varje vecka mellan 2019-2021."
+       },
+       {"fi": "Mukana ovat seuraavien ATC-luokkien lääkeaineet",
+        "en": "Data includes medicines from the following categories in ATC-system",
+        "sv": "Uppgifterna inkluderar läkemedel från följande nivåer i ATC-systemet"
        }
       ]
 }
-
