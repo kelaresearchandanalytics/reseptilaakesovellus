@@ -9,6 +9,17 @@ i18n$set_translation_language('fi')
 
 shinyUI(fluidPage(lang = "fi",
           title = "Reseptilääkkeiden ostot ATC-luokittain",
+          meta() %>%
+            meta_social(
+              title = "Reseptilääkkeiden ostot ATC-luokittain",
+              description = "Vertaa sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä",
+              url = "https://kelaresearchandanalytics.shinyapps.io/korona_atc_app/",
+              image = "https://kelaresearchandanalytics.shinyapps.io/korona_atc_app/og_img.png",
+              image_alt = "An image for social media cards",
+              twitter_creator = "@Kelantutkimus",
+              twitter_card_type = "summary_large_image",
+              twitter_site = "@Kelantutkimus"
+            ),
           shiny.i18n::usei18n(i18n),
           theme = bslib::bs_theme(),
           includeCSS("www/styles.css"),

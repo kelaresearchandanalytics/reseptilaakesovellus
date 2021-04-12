@@ -15,6 +15,7 @@ library(glue)
 library(httr)
 library(patchwork)
 library(svglite)
+library(metathis)
 options(scipen = 999)
 
 app_ver <- tags$code("v0.5")
