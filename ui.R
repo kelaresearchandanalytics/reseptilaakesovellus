@@ -9,6 +9,7 @@ i18n$set_translation_language('fi')
 
 shinyUI(fluidPage(lang = "fi",
           title = "Reseptilääkkeiden ostot ATC-luokittain",
+          tags$head(tags$link(rel="shortcut icon", href="https://www.kela.fi/kelafi-theme/images/favicon.ico")),
           meta() %>%
             meta_social(
               title = "Reseptilääkkeiden ostot ATC-luokittain",
