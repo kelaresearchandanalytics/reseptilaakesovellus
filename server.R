@@ -1456,7 +1456,7 @@ ja kuvata bugin/ominaisuuden siinä tai
 </li>
 <li>
 laittaa sähköpostia osoitteeseen 
-<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+<a href="mailto:markus.kainu@kela.fi">markus.kainu@kela.fi</a>
 </li>
 </ul>
 '))
@@ -1491,7 +1491,7 @@ and describe the bug/feature in it
 </li>
 <li>
 send email to
-<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+<a href="mailto:markus.kainu@kela.fi">markus.kainu@kela.fi</a>
 </li>
 </ul>
 '))
@@ -1523,7 +1523,7 @@ and describe the bug/feature in it
 </li>
 <li>
 send email to
-<a href="mailto:markus.kainu@kela.fi"><code>markus.kainu@kela.fi</code></a>
+<a href="mailto:markus.kainu@kela.fi">markus.kainu@kela.fi</a>
 </li>
 </ul>
 '))
