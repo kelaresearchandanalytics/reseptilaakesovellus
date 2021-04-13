@@ -24,7 +24,9 @@ shinyUI(fluidPage(lang = "fi",
           shiny.i18n::usei18n(i18n),
           theme = bslib::bs_theme(primary = "#0f73a9"),
           includeCSS("www/styles.css"),
-          
+          if (file.exists("www/piwik_script.txt")){
+            includeHTML(path = "www/piwik_script.txt")
+          },
           uiOutput("ui_navigation"),
           
           # Application title
