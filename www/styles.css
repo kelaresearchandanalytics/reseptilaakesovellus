@@ -51,6 +51,10 @@ button.bg-kela:hover {
 }
 
 
+.bootstrap-select>.dropdown-toggle.bs-placeholder, .bootstrap-select>.dropdown-toggle.bs-placeholder:active, .bootstrap-select>.dropdown-toggle.bs-placeholder:focus, .bootstrap-select>.dropdown-toggle.bs-placeholder:hover {
+    color: #000000;
+}
+
 .navbar-kela .navbar-brand{
   color:rgba(0,0,0,.9)
 }

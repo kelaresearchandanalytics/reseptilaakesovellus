@@ -10,7 +10,8 @@ i18n$set_translation_language('fi')
 shinyUI(fluidPage(lang = "fi",
           title = "Reseptilääkkeiden ostot ATC-luokittain",
           tags$head(tags$link(rel="shortcut icon", href="https://www.kela.fi/kelafi-theme/images/favicon.ico")),
-          meta() %>%
+          meta() %>% 
+            meta_description(description = "Vertaa sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä") %>% 
             meta_social(
               title = "Reseptilääkkeiden ostot ATC-luokittain",
               description = "Vertaa sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä",
@@ -27,7 +28,11 @@ shinyUI(fluidPage(lang = "fi",
           if (file.exists("www/piwik_script.txt")){
             includeHTML(path = "www/piwik_script.txt")
           },
+          
+          tags$html(HTML('<a class="sr-only sr-only-focusable" href="#maincontent">Skip to main</a>')),
+          
           uiOutput("ui_navigation"),
+          tags$html(HTML('<main id="maincontent">')),
           
           # Application title
           fluidRow(column(width = 6,
@@ -71,5 +76,6 @@ shinyUI(fluidPage(lang = "fi",
                           uiOutput("ui_about_app"),
                           tags$hr(),
                           uiOutput("ui_accessibility_statement")
-                          ))
+                          )),
+          tags$html(HTML('</main>'))
 ))
