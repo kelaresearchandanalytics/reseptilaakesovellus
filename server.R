@@ -67,7 +67,6 @@ shinyServer(function(input, output, session) {
     if (input$selected_language == "sv") df2$aluenimi <- df2$aluenimi_sv
     if (input$selected_language == "en") df2$aluenimi <- df2$aluenimi_en
     
-    
     datalist <- list()
     # datalist[["data"]] <- df2
     datalist[["atc"]] <- df2 %>% 
@@ -446,19 +445,13 @@ shinyServer(function(input, output, session) {
         df <- tmp_data %>% 
           filter(atc_taso == 0) %>%
           mutate(atc_selite = i18n$t("Kaikki ATC-luokat yhdessä")) %>% 
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
         
       } else {
         
         df <- tmp_data %>%
           filter(atc_koodi %in% input$value_atc_search) %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
       }
       
     } else {
@@ -467,10 +460,7 @@ shinyServer(function(input, output, session) {
         df <- tmp_data %>% 
           filter(atc_taso == 0) %>% 
           mutate(atc_selite = i18n$t("Kaikki ATC-luokat yhdessä")) %>% 
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
         
         # } else {
       } else if (is.null(input$value_atc_2)){
@@ -483,10 +473,7 @@ shinyServer(function(input, output, session) {
           group_by(vuosi, aluenimi, atc_koodi, atc_selite,viikko,variable) %>%
           summarise(arvo = sum(arvo, na.rm = TRUE)) %>%
           ungroup() %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
       } else if (is.null(input$value_atc_3)){
         
         df <- tmp_data %>%
@@ -495,10 +482,7 @@ shinyServer(function(input, output, session) {
           group_by(vuosi, aluenimi, atc_koodi, atc_selite,viikko,variable) %>%
           summarise(arvo = sum(arvo, na.rm = TRUE)) %>%
           ungroup() %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
         
       } else if (is.null(input$value_atc_4)){
         
@@ -508,10 +492,7 @@ shinyServer(function(input, output, session) {
           group_by(vuosi, aluenimi, atc_koodi, atc_selite,viikko,variable) %>%
           summarise(arvo = sum(arvo, na.rm = TRUE)) %>%
           ungroup() %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
+          select(aluenimi, viikko, everything())
         
       } else  if (is.null(input$value_atc_5)){
         
@@ -521,11 +502,7 @@ shinyServer(function(input, output, session) {
           group_by(vuosi, aluenimi, atc_koodi, atc_selite,viikko,variable) %>%
           summarise(arvo = sum(arvo, na.rm = TRUE)) %>%
           ungroup() %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
-        
+          select(aluenimi, viikko, everything())
       } else {
         
         df <- tmp_data %>%
@@ -534,27 +511,20 @@ shinyServer(function(input, output, session) {
           group_by(vuosi, aluenimi, atc_koodi, atc_selite,viikko,variable) %>%
           summarise(arvo = sum(arvo, na.rm = TRUE)) %>%
           ungroup() %>%
-          select(aluenimi, viikko, everything()) %>%
-          pivot_wider(names_from = vuosi,values_from = arvo) %>%
-          mutate(ero = round(`2020` - `2019`),
-                 ero_pros = round(ero / `2019`*100,1))
-        
+          select(aluenimi, viikko, everything())
       }
     }
     
     metadata <- create_metadata()
     
     df2 <- df %>% 
-      filter(`2019` > 0,
-             `2020` > 0) %>%
       left_join(metadata %>% mutate(code = tolower(code)) %>% 
                   select(code,name), 
                 by = c("variable" = "code")) %>% 
       select(-variable) %>% 
       rename(muuttuja = name) %>% 
-      # select(aluenimi, viikko, muuttuja, everything())
-      select(aluenimi,viikko,muuttuja,atc_koodi,atc_selite,`2019`,`2020`,ero,ero_pros)
-    
+      select(aluenimi, viikko, muuttuja, everything())
+
     return(df2)
     # df
   })
@@ -980,7 +950,7 @@ shinyServer(function(input, output, session) {
       return(data_name)
     },
     content = function(file) {
-      readr::write_excel_csv2(x = create_download_csv(), path = file)
+      readr::write_excel_csv2(x = create_download_csv(), file = file)
     }
   )
   
