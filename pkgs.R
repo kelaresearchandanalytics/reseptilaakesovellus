@@ -1,0 +1,12 @@
+pkgs <- c("shiny",
+"shinyWidgets",
+"shinycssloaders",
+"shiny.i18n",
+"dplyr",
+"ggplot2",
+"tidyr",
+"glue",
+"httr",
+"patchwork",
+"svglite",
+"metathis")
