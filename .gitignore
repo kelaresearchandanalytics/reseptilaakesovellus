@@ -11,3 +11,4 @@ korona_atc_app.Rproj
 shiny_bookmarks
 run.R
 rsconnect
+.Renviron

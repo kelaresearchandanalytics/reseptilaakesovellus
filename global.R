@@ -1,6 +1,22 @@
-source("pkgs.R")
-lapply(pkgs, require, character.only = TRUE)
+# source("pkgs.R")
+# lapply(pkgs, require, character.only = TRUE)
 
+library('shiny')
+library('shinyWidgets')
+library('shinycssloaders')
+library('shiny.i18n')
+library('dplyr')
+library('ggplot2')
+library('tidyr')
+library('glue')
+library('httr')
+library('patchwork')
+library('svglite')
+library('metathis')
+library('ragg')
+
+
+Sys.setlocale(locale="en_US.UTF-8")
 
 options(scipen = 999)
 options(shiny.useragg = TRUE)

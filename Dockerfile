@@ -1,12 +1,12 @@
-FROM rocker/shiny:4.0.4
-RUN install2.r rsconnect
-RUN install2.r rsconnect dplyr ggplot2 glue httr metathis patchwork shiny shiny.i18n shinycssloaders shinyWidgets svglite tidyr
-WORKDIR /home/shinyusr
+FROM rocker/shiny-verse:4.1.1
+RUN install2.r rsconnect dplyr ggplot2 glue httr metathis patchwork shiny shiny.i18n shinycssloaders shinyWidgets svglite tidyr ragg RcppArmadillo Rttf2pt1 e1071 classInt extrafont extrafontdb gdtools geofacet geogrid hrbrthemes
+WORKDIR /home/aurelius/btsync/kela/korona_atc_app
 COPY ui.R ui.R
 COPY server.R server.R
 COPY global.R global.R
 COPY pkgs.R pkgs.R
-COPY www ./
-COPY translations ./
+# COPY .Renviron .Renviron
+COPY www/ ./www
+COPY translations/ ./translations
 COPY deploy.R deploy.R
 CMD Rscript deploy.R
