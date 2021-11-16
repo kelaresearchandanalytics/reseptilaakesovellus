@@ -20,5 +20,6 @@ deployApp(
   appFiles = c("ui.R","server.R", "global.R", "www", "translations", "pkgs.R"#, "renv/activate.R","renv.lock",'.Rprofile'
   ),
   appName = error_on_missing_name("MASTERNAME"),
+  forceUpdate = TRUE,
   appTitle = "shinyapplication",
   account = "kelaresearchandanalytics")
