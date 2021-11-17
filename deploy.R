@@ -27,6 +27,6 @@ setAccountInfo(name   = error_on_missing_name("SHINY_ACC_NAME"),
 #   account = "kelaresearchandanalytics")
 rsconnect::deployApp(launch.browser = FALSE,
                      lint = FALSE,
-                     appName = error_on_missing_name("MASTERNAME"),
+                     appName = error_on_missing_name("TESTNAME"),
                      account = 'kelaresearchandanalytics',
                      forceUpdate = TRUE)
