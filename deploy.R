@@ -25,4 +25,8 @@ setAccountInfo(name   = error_on_missing_name("SHINY_ACC_NAME"),
 #   forceUpdate = TRUE,
 #   appTitle = "korona_atc_app_title",
 #   account = "kelaresearchandanalytics")
-rsconnect::deployApp(launch.browser = FALSE, lint = FALSE, account = 'kelaresearchandanalytics', forceUpdate = TRUE)
+rsconnect::deployApp(launch.browser = FALSE,
+                     lint = FALSE,
+                     appName = error_on_missing_name("MASTERNAME"),
+                     account = 'kelaresearchandanalytics',
+                     forceUpdate = TRUE)
