@@ -1093,6 +1093,7 @@ shinyServer(function(input, output, session) {
 
       taglst <-  tagList(
         tags$html(HTML('
+ <header class="blog-header sticky-top container_1280">
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
       <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Logo of Kela"></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Open the menu">
@@ -1111,12 +1112,14 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-  </nav>'))
+  </nav>
+   </header>'))
       )
     } else if (lang == "sv"){
 
       taglst <-  tagList(
         tags$html(HTML('
+    <header class="blog-header sticky-top container_1280">
     <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
       <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174554&t=1618232714508" style = "height: 35px; padding-right: 0px;" alt = "Logotyp för Fpa"></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="öppna menyn">
@@ -1135,7 +1138,8 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-  </nav>'))      )
+  </nav>
+  </header>'))      )
     }
 
     return(taglst)
@@ -1402,7 +1406,7 @@ Telefon växel: 0295 016 000</p>
         tags$html(HTML('
 <strong>Reseptilääkkeiden ostot ATC-luokittain -verkkosovellus</strong>
 <p>Sovellusversio
-<code>v0.5.5</code><br/>
+<code>v0.5.6</code><br/>
 </p>
 <p>Tämä verkkosovellus on tehty
 <a href="https://www.r-project.org/">R</a>-kielellä
@@ -1437,7 +1441,7 @@ laittaa sähköpostia osoitteeseen
         tags$html(HTML('
 <strong>Purchased prescription medicines in Finland -web application</strong>
 <p>Version
-<code>v0.5.5</code><br/>
+<code>v0.5.6</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
@@ -1469,7 +1473,7 @@ send email to
         tags$html(HTML('
 <strong>Receptbelagda läkemedel enligt ATC-systemet -webbapplikation</strong>
 <p>Version
-<code>v0.5.5</code><br/>
+<code>v0.5.6</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
