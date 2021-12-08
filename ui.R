@@ -9,7 +9,15 @@ i18n$set_translation_language('fi')
 
 shinyUI(fluidPage(lang = "fi",
           title = "Reseptilääkkeiden ostot ATC-luokittain",
-          tags$head(tags$link(rel="shortcut icon", href="https://www.kela.fi/kelafi-theme/images/favicon.ico")),
+          tags$head(tags$link(rel="shortcut icon", href="https://www.kela.fi/kelafi-theme/images/favicon.ico"),
+                    tags$link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"),
+                    tags$link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"),
+                    tags$link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"),
+                    tags$link(rel="stylesheet", href="https://laaketieto.kela.fi/css/style.css"),
+                    tags$script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"), 
+                    tags$script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js")#, 
+                    # tags$script(src="https://code.jquery.com/jquery-3.5.1.min.js")
+          ),
           meta() %>%
             meta_description(description = "Vertaa sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä") %>%
             meta_social(
@@ -22,9 +30,13 @@ shinyUI(fluidPage(lang = "fi",
               twitter_card_type = "summary_large_image",
               twitter_site = "@Kelantutkimus"
             ),
+          tags$style(HTML("
+      .container_1280 {
+        max-width: 1280px; 
+        margin: auto;
+        }")),
           shiny.i18n::usei18n(i18n),
           theme = bslib::bs_theme(primary = "#0f73a9"),
-          includeCSS("www/styles.css"),
           if (file.exists("www/piwik_script.txt")){
             includeHTML(path = "www/piwik_script.txt")
           },
@@ -33,6 +45,7 @@ shinyUI(fluidPage(lang = "fi",
 
           uiOutput("ui_navigation"),
           tags$html(HTML('<main id="maincontent">')),
+          tags$html(HTML('<div class="container_1280">')),
 
           # Application title
           fluidRow(column(width = 6,
@@ -77,5 +90,5 @@ shinyUI(fluidPage(lang = "fi",
                           tags$hr(),
                           uiOutput("ui_accessibility_statement")
                           )),
-          tags$html(HTML('</main>'))
+          tags$html(HTML('</main></div>'))
 ))

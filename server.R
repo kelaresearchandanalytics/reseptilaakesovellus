@@ -770,7 +770,7 @@ shinyServer(function(input, output, session) {
                x = NULL) +
           scale_fill_manual(values = atc_color_palette) +
           scale_color_manual(values = atc_color_palette) +
-          hrbrthemes::theme_ipsum(base_family = "PT Sans", base_size = 11, axis_title_size = 12, plot_title_size = 14) +
+          hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 11, axis_title_size = 12, plot_title_size = 14) +
           theme(legend.position = legend_position,
                 panel.grid.minor = element_blank(),
                 axis.text.x = element_blank(),
@@ -799,7 +799,7 @@ shinyServer(function(input, output, session) {
                x = plot_xtitle) +
           scale_fill_manual(values = atc_color_palette) +
           scale_color_manual(values = atc_color_palette) +
-          hrbrthemes::theme_ipsum(base_family = "PT Sans", base_size = 11, axis_title_size = 12) +
+          hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 11, axis_title_size = 12) +
           theme(panel.grid.minor = element_blank(),
                 legend.position = "none",
                 legend.text = element_text(size = 12),
@@ -830,7 +830,7 @@ shinyServer(function(input, output, session) {
             title = plot_ytitle,
             subtitle = plot_subtitle,
             caption = Sys.time(),
-            theme = hrbrthemes::theme_ipsum(base_family = "PT Sans", base_size = 15)
+            theme = hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 15)
           )  -> p
       }
 
@@ -856,7 +856,7 @@ shinyServer(function(input, output, session) {
         geom_point(size = 1.1, stroke = .4, alpha = 1, color = "dim grey") +
         geofacet::facet_geo(~aluenimi, grid = grid_geo, scales = "free") +
         # facet_wrap(~alue) +
-        hrbrthemes::theme_ipsum(base_family = "PT Sans", base_size = 10, axis_title_size = 12) +
+        hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 10, axis_title_size = 12) +
         theme(legend.position = "top",
               panel.grid.minor = element_blank(),
               legend.text = element_text(size = 12),
@@ -1067,7 +1067,8 @@ shinyServer(function(input, output, session) {
 
       taglst <-  tagList(
         tags$html(HTML('
-    <nav class="navbar navbar-kela bg-kela navbar-light">
+    <header class="blog-header sticky-top container_1280">
+    <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
       <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
         <span class="navbar-toggler-icon"></span>
@@ -1085,7 +1086,8 @@ shinyServer(function(input, output, session) {
           </li>
         </ul>
       </div>
-  </nav>'))
+  </nav>
+  </header>'))
       )
     } else if (lang == "en"){
 
