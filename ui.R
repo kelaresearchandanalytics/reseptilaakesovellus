@@ -31,6 +31,10 @@ shinyUI(fluidPage(lang = "fi",
               twitter_site = "@Kelantutkimus"
             ),
           tags$style(HTML("
+      a {
+      color: #0f73a9
+      }
+          
       .container_1280 {
         max-width: 1280px; 
         margin: auto;
