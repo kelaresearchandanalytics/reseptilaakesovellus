@@ -1066,40 +1066,23 @@ shinyServer(function(input, output, session) {
     if (lang == "fi"){
 
       taglst <-  tagList(
-        tags$html(HTML('
-    <header class="blog-header sticky-top container_1280">
-    <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo"></div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#ohje">Ohjeet</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#info">Lähdekoodi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#saavutettavuus">Saavutettavuusseloste</a>
-          </li>
-        </ul>
-      </div>
-  </nav>
-  </header>'))
+        HTML('
+         <ul class="navbar-nav ml-auto">
+           <li class="nav-item">
+             <a class="nav-link" href="#ohje">Ohjeet</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#info">Lähdekoodi</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#saavutettavuus">Saavutettavuusseloste</a>
+           </li>
+        </ul>')
       )
     } else if (lang == "en"){
 
       taglst <-  tagList(
-        tags$html(HTML('
- <header class="blog-header sticky-top container_1280">
-    <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Logo of Kela"></div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Open the menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+        HTML('
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#ohjeet">Instructions</a>
@@ -1110,23 +1093,12 @@ shinyServer(function(input, output, session) {
           <li class="nav-item">
             <a class="nav-link" href="#saavutettavuus">Accessibility </a>
           </li>
-        </ul>
-      </div>
-  </nav>
-   </header>'))
+        </ul>')
       )
     } else if (lang == "sv"){
 
       taglst <-  tagList(
-        tags$html(HTML('
-    <header class="blog-header sticky-top container_1280">
-    <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
-      <div class="navbar-brand" role="brand"><img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174554&t=1618232714508" style = "height: 35px; padding-right: 0px;" alt = "Logotyp för Fpa"></div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="öppna menyn">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        HTML('<ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#ohje">Instruktioner</a>
           </li>
@@ -1136,16 +1108,13 @@ shinyServer(function(input, output, session) {
           <li class="nav-item">
             <a class="nav-link" href="#saavutettavuus">Tillgänglighet</a>
           </li>
-        </ul>
-      </div>
-  </nav>
-  </header>'))      )
+        </ul>')      )
     }
 
     return(taglst)
   }
 
-  output$ui_navigation <- renderUI({
+  output$ui_navigation_links <- renderUI({
 
     req(input$selected_language)
 

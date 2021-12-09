@@ -45,11 +45,23 @@ shinyUI(fluidPage(lang = "fi",
             includeHTML(path = "www/piwik_script.txt")
           },
 
-          tags$html(HTML('<a class="sr-only sr-only-focusable" href="#maincontent">Skip to main</a>')),
-
-          uiOutput("ui_navigation"),
-          tags$html(HTML('<main id="maincontent">')),
-          tags$html(HTML('<div class="container_1280">')),
+          HTML('<a class="sr-only sr-only-focusable" href="#maincontent">Skip to main</a>
+    <header class="blog-header sticky-top container_1280">
+                <nav class="navbar navbar-kela bg-kela navbar-light sticky-top">
+                     <div class="navbar-brand" role="brand">
+      <img src = "https://www.kela.fi/image/layout_set_logo?img_id=2174196&t=1585229282595" style = "height: 35px; padding-right: 0px;" alt = "Kelan logo">
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Avaa valikko">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div role = "navigation" class="collapse navbar-collapse justify-content-between" id="navbarResponsive">
+               <ul></ul>'),
+        uiOutput("ui_navigation_links"),
+      HTML('</div>
+    </nav>
+  </header>'),
+          HTML('<main id="maincontent">'),
+          HTML('<div class="container_1280">'),
 
           # Application title
           fluidRow(column(width = 6,
