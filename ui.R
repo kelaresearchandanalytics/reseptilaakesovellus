@@ -63,6 +63,9 @@ shinyUI(fluidPage(lang = "fi",
           HTML('<main id="maincontent">'),
           HTML('<div class="container_1280">'),
 
+      HTML('<div class="alert alert-success" role="alert">
+Sovellus on tauolla tammikuun ensimmäisen ja toisen viikon ajan. Sovellus on käytössä jälleen 19.1.2022 alkaen.</div>'),
+      
           # Application title
           fluidRow(column(width = 6,
                           uiOutput("ui_info_text")),
