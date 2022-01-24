@@ -33,10 +33,12 @@ shinyServer(function(input, output, session) {
   ### datafunktiot ----
   create_metadata <- reactive({
 
-    try_error <- try(df2 <- readr::read_csv2("https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/metadata_viikko.csv"))
-    if ("try-error" %in% class(try_error)){
-      df2 <- readRDS("./data/metadata_viikko.RDS")
-    }
+    # try_error <- try(df2 <- readr::read_csv2("https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/metadata_viikko.csv"))
+    # if ("try-error" %in% class(try_error)){
+    
+      df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko.csv")
+      # df2 <- readr::read_csv2("../korona_atc_data/metadata_viikko.csv")
+    # }
     names(df2) <- tolower(names(df2))
     return(df2)
   })
@@ -49,14 +51,16 @@ shinyServer(function(input, output, session) {
 
   create_data <- reactive({
 
-    try_error <- try(df2 <- readr::read_csv2("https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_2019.csv"))
-    if ("try-error" %in% class(try_error)){
-      df2 <- readRDS("./data/data_viikko.RDS")
-    } else {
-      df3 <- readr::read_csv2("https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_2020.csv")
-      df4 <- readr::read_csv2("https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_2021.csv")
-      df2 <- bind_rows(df2,df3,df4)
-    }
+
+      # df5 <- readr::read_csv2("../korona_atc_data/data_viikko_2022.csv")
+      # df4 <- readr::read_csv2("../korona_atc_data/data_viikko_2021.csv")
+      # df3 <- readr::read_csv2("../korona_atc_data/data_viikko_2020.csv")
+      # df1 <- readr::read_csv2("../korona_atc_data/data_viikko_2019.csv")
+    df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2022.csv")
+    df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
+    df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
+    df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
+    df2 <- bind_rows(df1,df3,df4,df5)
     names(df2) <- tolower(names(df2))
 
     if (input$selected_language == "fi") df2$atc_selite <- df2$atc_selite_fi
@@ -1419,7 +1423,7 @@ Telefon växel: 0295 016 000</p>
         tags$html(HTML('
 <strong>Reseptilääkkeiden ostot ATC-luokittain -verkkosovellus</strong>
 <p>Sovellusversio
-<code>v0.6.0</code><br/>
+<code>v0.6.1</code><br/>
 </p>
 <p>Tämä verkkosovellus on tehty
 <a href="https://www.r-project.org/">R</a>-kielellä
@@ -1454,7 +1458,7 @@ laittaa sähköpostia osoitteeseen
         tags$html(HTML('
 <strong>Purchased prescription medicines in Finland -web application</strong>
 <p>Version
-<code>v0.6.0</code><br/>
+<code>v0.6.1</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
@@ -1486,7 +1490,7 @@ send email to
         tags$html(HTML('
 <strong>Receptbelagda läkemedel enligt ATC-systemet -webbapplikation</strong>
 <p>Version
-<code>v0.6.0</code><br/>
+<code>v0.6.1</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
