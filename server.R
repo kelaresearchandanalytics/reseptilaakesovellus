@@ -11,9 +11,9 @@ shinyServer(function(input, output, session) {
   ### inputit ----
   output$ui_language_selection <- renderUI({
     tagList(
-      selectInput(inputId = 'selected_language',
+      radioButtons(inputId = 'selected_language',
                   label = "Valitse kieli / Select language / Välj språk",
-                  # label = icon(name = "language", class = "ikoni"),
+                  inline = TRUE,
                   choices = i18n$get_languages(),
                   selected = input$selected_language)
     )
@@ -126,6 +126,27 @@ shinyServer(function(input, output, session) {
       tagList()
     }
   })
+  
+  
+  
+  # observeEvent(input$selected_language, {
+  #   updateActionButton("nappula", 
+  #                      session = session,
+  #                      label = i18n$t("Päivitä kuva")
+  #   )
+  # })
+  
+  output$inputs_action_button <- renderUI({
+    
+    tagList(
+      actionButton("nappula", 
+                   label = i18n$t("Päivitä kuva"), 
+                   icon("fas fa-sync")
+      )
+    )
+  })
+  
+  
 
   output$inputs_atc_search <- renderUI({
 
@@ -911,30 +932,53 @@ shinyServer(function(input, output, session) {
     alt_teksti <- glue("{plot_subtitle}.\n\n{i18n$t('Tiedot näytetään aluetasolla')} {i18n$t(input$value_region)}. {i18n$t('Tiedot ovat viikkotasolla vuosilta 2019-2021.')} \n\n{i18n$t('Mukana ovat seuraavien ATC-luokkien lääkeaineet')}: {glue::glue_collapse(atcs, sep = ', ')}")
     return(alt_teksti)
   }
+  
+  
+  
+  funk <- eventReactive({
+    input$nappula
+  }, {
+    create_plot(input$value_varname)
+                }, ignoreNULL = FALSE)
+  
+  output$timeseries_plot <- renderPlot({
+    funk()
+  })
 
 
   output$plot_main <- renderPlot({
-    create_plot(input$value_varname)
+    # create_plot(input$value_varname)
+    funk()
   }, alt = reactive({create_plot_alt_text(input$value_varname)}) )
 
-  output$plot_main_ui <- renderUI({
-
-    req(input$selected_language)
-
+  
+  dimsReactive <- eventReactive({
+    input$nappula
+  }, {
+    if (input$nappula == 0){
+      dims <- c("100%","700px")  
+    } else {
     dat_plot_list <- create_plot_data()
     facet_n <- dat_plot_list[["facet_n"]]
     width = "100%"
+    # if (TRUE){
     if (input$value_region == "Koko Suomi"){
       height = paste0(200 + ceiling(facet_n/2) * 550, "px")
     } else {
       height = "1100px"
     }
-    plotOutput("plot_main", width = width, height = height)
+    dims <- c(width,height)
+  }
+    return(dims)
+  }, ignoreNULL = FALSE)
+  
+  
+  
+  output$plot_main_ui <- renderUI({
+    width_height <- dimsReactive()
+    plotOutput("plot_main", width = width_height[1], height = width_height[2])
+
   })
-
-
-
-
 
   output$ui_download_csv <- renderUI({
     req(input$selected_language)
@@ -1375,7 +1419,7 @@ Telefon växel: 0295 016 000</p>
         tags$html(HTML('
 <strong>Reseptilääkkeiden ostot ATC-luokittain -verkkosovellus</strong>
 <p>Sovellusversio
-<code>v0.5.6</code><br/>
+<code>v0.6.0</code><br/>
 </p>
 <p>Tämä verkkosovellus on tehty
 <a href="https://www.r-project.org/">R</a>-kielellä
@@ -1410,7 +1454,7 @@ laittaa sähköpostia osoitteeseen
         tags$html(HTML('
 <strong>Purchased prescription medicines in Finland -web application</strong>
 <p>Version
-<code>v0.5.6</code><br/>
+<code>v0.6.0</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
@@ -1442,7 +1486,7 @@ send email to
         tags$html(HTML('
 <strong>Receptbelagda läkemedel enligt ATC-systemet -webbapplikation</strong>
 <p>Version
-<code>v0.5.6</code><br/>
+<code>v0.6.0</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with

@@ -63,8 +63,9 @@ shinyUI(fluidPage(lang = "fi",
           HTML('<main id="maincontent">'),
           HTML('<div class="container_1280">'),
 
-      HTML('<div class="alert alert-success" role="alert">
-Sovelluksen datan päivitys on tauolla tammikuun ensimmäisen ja toisen viikon ajan. Datan päivittyy jälleen 20.1.2022 alkaen.</div>'),
+# VUODENVAIHDENOOTTI
+#       HTML('<div class="alert alert-success" role="alert">
+# Sovelluksen datan päivitys on tauolla tammikuun ensimmäisen ja toisen viikon ajan. Datan päivittyy jälleen 20.1.2022 alkaen.</div>'),
       
           # Application title
           fluidRow(column(width = 6,
@@ -91,7 +92,13 @@ Sovelluksen datan päivitys on tauolla tammikuun ensimmäisen ja toisen viikon a
           ),
           fluidRow(
             column(width = 4,
-                   uiOutput("inputs_varname")),
+                   uiOutput("inputs_varname"),
+                   uiOutput("inputs_action_button")),
+                   # actionButton("nappula", 
+                   #              label = "Päivitä kuva", 
+                   #              icon("refresh")
+                   #              )
+                   # ),
             column(width = 2,
                    uiOutput("ui_download_csv")),
             column(width = 2,

@@ -105,6 +105,10 @@
         "en": "Download .svg-image",
         "sv": "Ladda .svg-bild"
       },
+            {"fi": "Päivitä kuva",
+         "en": "Update plot",
+         "sv": "Uppdatera diagram"
+      },
             {"fi": "Valitse sivu",
         "en": "Pick a page",
         "sv": "Välj en sida"
