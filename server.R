@@ -783,8 +783,8 @@ shinyServer(function(input, output, session) {
       for (i in 1:length(atcs)){
         datplot2 <- datplot[datplot$atc_selite %in% atcs[i],]
 
-        if (i %in% 1:2) legend_position <- "top" else legend_position <- "none"
-        # legend_position <- "top"
+        # if (i %in% 1:2) legend_position <- "top" else legend_position <- "none"
+        legend_position <- "top"
         
         yrs <- unique(datplot2$vuosi)
         atc_color_palette_ss <- create_color_palette(years = yrs)
