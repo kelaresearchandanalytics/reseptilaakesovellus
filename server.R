@@ -784,6 +784,11 @@ shinyServer(function(input, output, session) {
         datplot2 <- datplot[datplot$atc_selite %in% atcs[i],]
 
         if (i %in% 1:2) legend_position <- "top" else legend_position <- "none"
+        # legend_position <- "top"
+        
+        yrs <- unique(datplot2$vuosi)
+        atc_color_palette_ss <- create_color_palette(years = yrs)
+          
 
         p1 <- ggplot(datplot2, aes(x = viikko, y = arvo, fill = factor(vuosi), color = factor(vuosi), group = vuosi)) +
           geom_path(alpha = .8) +
@@ -793,8 +798,8 @@ shinyServer(function(input, output, session) {
                title = add_line_break2(atcs[i], n = 40),
                y = plot_ytitle,
                x = NULL) +
-          scale_fill_manual(values = atc_color_palette) +
-          scale_color_manual(values = atc_color_palette) +
+          scale_fill_manual(values = atc_color_palette_ss) +
+          scale_color_manual(values = atc_color_palette_ss) +
           hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 11, axis_title_size = 12, plot_title_size = 14) +
           theme(legend.position = legend_position,
                 panel.grid.minor = element_blank(),
@@ -822,8 +827,8 @@ shinyServer(function(input, output, session) {
                #subtitle = add_line_break2(plot_subtitle, n = 90),
                y = NULL,
                x = plot_xtitle) +
-          scale_fill_manual(values = atc_color_palette) +
-          scale_color_manual(values = atc_color_palette) +
+          scale_fill_manual(values = atc_color_palette_ss) +
+          scale_color_manual(values = atc_color_palette_ss) +
           hrbrthemes::theme_ipsum(base_family = "Lato", base_size = 11, axis_title_size = 12) +
           theme(panel.grid.minor = element_blank(),
                 legend.position = "none",
