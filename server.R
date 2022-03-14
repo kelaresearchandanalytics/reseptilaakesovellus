@@ -1428,7 +1428,7 @@ Telefon växel: 0295 016 000</p>
         tags$html(HTML('
 <strong>Reseptilääkkeiden ostot ATC-luokittain -verkkosovellus</strong>
 <p>Sovellusversio
-<code>v0.6.1</code><br/>
+<code>v0.6.2</code><br/>
 </p>
 <p>Tämä verkkosovellus on tehty
 <a href="https://www.r-project.org/">R</a>-kielellä
@@ -1463,7 +1463,7 @@ laittaa sähköpostia osoitteeseen
         tags$html(HTML('
 <strong>Purchased prescription medicines in Finland -web application</strong>
 <p>Version
-<code>v0.6.1</code><br/>
+<code>v0.6.2</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
@@ -1495,7 +1495,7 @@ send email to
         tags$html(HTML('
 <strong>Receptbelagda läkemedel enligt ATC-systemet -webbapplikation</strong>
 <p>Version
-<code>v0.6.1</code><br/>
+<code>v0.6.2</code><br/>
 </p>
 <p>This applications is written using
 <a href="https://www.r-project.org/">R</a>-language with
