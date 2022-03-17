@@ -31,6 +31,7 @@ Imports:
     magrittr,
     metathis,
     patchwork,
+    pkgload,
     ragg,
     shiny (>= 1.7.1),
     shiny.i18n,
