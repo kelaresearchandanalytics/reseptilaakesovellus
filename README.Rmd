@@ -1,0 +1,63 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# reseptilaakesovellus
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Sovellus Kelan julkaisemaan lääkkeiden hamstrausta käsittelevän datan selaamiseen
+
+Sovellus lukee sivulla: https://github.com/kelaresearchandanalytics/korona_atc_data julkaistua dataa. Sovellus on julkaistu Kelan tutkimusblogissa: https://tutkimusblogi.kela.fi/arkisto/5254
+
+Suora linkki sovellukseen: kelaresearchandanalytics.shinyapps.io/korona_atc_app/
+
+
+## Asentaminen
+
+You can install the development version of reseptilaakesovellus like so:
+
+``` r
+remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus")
+```
+
+## Resursseja kehittämisen tueksi
+
+### Shiny
+
+- [Wickham (tekeillä) *Mastering Shiny*](https://mastering-shiny.org/)
+- [Youtube-haku: "mastering+shiny"](https://www.youtube.com/results?search_query=mastering+shiny)
+
+### Golem
+
+- [`golem` homepage](https://thinkr-open.github.io/golem/)
+- [Colin Fay & Co (2022) *Engineering Production-Grade Shiny Apps*](https://engineering-shiny.org/)
+- [Youtube-haku: "golem+shiny"](https://www.youtube.com/results?search_query=golem+shiny)
+
+
+## Viittaa
+
+```{r}
+citation("reseptilaakesovellus")
+```
+
+
+
+
+***
+
+- Lähdekoodi on lisensoitu [MIT-lisenssillä](https://opensource.org/licenses/MIT)
+- &#169; 2020-2022 Markus Kainu & Kela
+
