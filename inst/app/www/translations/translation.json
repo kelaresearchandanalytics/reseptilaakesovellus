@@ -1,0 +1,195 @@
+{
+  "languages": ["fi", "en","sv"],
+  "translation": [
+        {"fi": "Valitse kieli",
+         "en": "Select language",
+         "sv": "Välj språk"
+      },
+       {"fi": "Reseptilääkkeiden ostot ATC-luokittain",
+        "en": "Prescription medicines classified by ATC system",
+        "sv": "Receptbelagda läkemedel klassificeras enligt ATC-systemet"
+      },
+       {"fi": "Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuosien 2019 ja 2020 välillä ATC-luokituksen tasoilla 1-5. Tiedot perustuvat apteekkien päivittäin Kelaan toimittamiin ostotietoihin. Aineistosta on poistettu ne lääkeaineet, joita on yhtenä tai useampana viikkona ostanut alle 10 henkilöä.",
+        "en": "You can compare weekly costs, purchased amounts and the number of purchasers of reimbursable prescription medicines between 2019 and 2020 using ATC-classification in levels 1-5. The information is based on daily data (verbi) by pharmacies to Kela. (Lääkeaineet) with less than 10 purchasers in one or more weeks have been removed from the data.",
+        "sv": "Voit verrata sairausvakuutuksesta... på Svenska"
+      },
+      {"fi": "Valitse hakutyyppi",
+        "en": "Select search mode",
+        "sv": "Välj sökalternativ"
+      },
+      {"fi": "valikkohaku",
+        "en": "menu search",
+        "sv": "meny sök"
+      },
+      {"fi": "tekstihaku",
+        "en": "text search",
+        "sv": "text sök"
+      },
+            {"fi": "Valitse ATC-luokka taso 1",
+            "en": "Select ATC level 1",
+        "sv": "Välj ATC-nivå 1"
+      },
+                  {"fi": "Valitse ATC-luokka taso 2",
+            "en": "Select ATC level 2",
+        "sv": "Välj ATC-nivå 2"
+      },
+                  {"fi": "Valitse ATC-luokka taso 3",
+            "en": "Select ATC level 3",
+        "sv": "Välj ATC-nivå 3"
+      },
+                  {"fi": "Valitse ATC-luokka taso 4",
+            "en": "Select ATC level 4",
+        "sv": "Välj ATC-nivå 4"
+      },
+                  {"fi": "Valitse ATC-luokka taso 5",
+            "en": "Select ATC level 5",
+        "sv": "Välj ATC-nivå 5"
+      },
+      {"fi": "Rajaa ATC-luokka nimen/koodin perusteella (erota hakuehdot |-merkillä)",
+        "en": "Search ATC group or active substance by name/ATC code (use |-character to separate search terms)",
+        "sv": "Sök ATC grupp eller aktiva substans "
+      },
+      {"fi": "Ja valitse kuvan/taulukon ATC-luokat hakutuloksista",
+        "en": "And select ATC group of the plot/table from search results",
+        "sv": "Och välj ATC grupp från sökresultat"
+      },
+      {"fi": "Data päivitetty:",
+        "en": "Data updated:",
+        "sv": "Data uppdaterad:"
+      },
+            {"fi": "Ei yhtään valittuna!",
+        "en": "Nothing selected!",
+        "sv": "Ingenting valt!"
+      },
+            {"fi": "Kaikki",
+        "en": "All",
+        "sv": "Alla"
+      },
+            {"fi": "Ei mitään",
+        "en": "Nothing",
+        "sv": "Ingenting"
+      },
+            {"fi": "Valitse aluetaso",
+        "en": "Select regional level",
+        "sv": "Välj regional nivå"
+      },
+            {"fi": "Koko Suomi",
+        "en": "Whole Finland",
+        "sv": "Finland"
+      },
+            {"fi": "Sairaanhoitopiirit",
+        "en": "Hospital Districts",
+        "sv": "Sjukvårdsdistrikt"
+      },
+            {"fi": "Jaa valintasi",
+        "en": "Share your selections",
+        "sv": "Dela dina val"
+      },
+            {"fi": "Valitse muuttuja välilehdeltä",
+        "en": "Select variable from tabs",
+        "sv": "Välj variabel"
+      },
+            {"fi": "Lataa .csv-data",
+        "en": "Download .csv-data",
+        "sv": "Ladda .csv-data"
+      },  
+            {"fi": "Lataa .pdf-kuva",
+        "en": "Download .pdf-image",
+        "sv": "Ladda .pdf-bild"
+      },
+            {"fi": "Lataa .png-kuva",
+        "en": "Download .png-image",
+        "sv": "Ladda .png-bild"
+      },
+            {"fi": "Lataa .svg-kuva",
+        "en": "Download .svg-image",
+        "sv": "Ladda .svg-bild"
+      },
+            {"fi": "Päivitä kuva",
+         "en": "Update plot",
+         "sv": "Uppdatera diagram"
+      },
+            {"fi": "Valitse sivu",
+        "en": "Pick a page",
+        "sv": "Välj en sida"
+      },
+            {"fi": "Sovellus",
+        "en": "Application",
+        "sv": "Applikation"
+      },
+            {"fi": "Lisätietoja",
+        "en": "Information",
+        "sv": "Info på svenska"
+      },
+            {"fi": "Taulukko",
+        "en": "Table",
+        "sv": "Tabell"
+      },
+            {"fi": "Kuvio",
+        "en": "Plot",
+        "sv": "Diagram"
+      },
+            {"fi": "Kustannukset",
+        "en": "Costs",
+        "sv": "Kostnader"
+      },
+            {"fi": "Ostomäärät",
+        "en": "Number of purchases",
+        "sv": "Antal inköp"
+      },
+            {"fi": "Ostajien määrät",
+        "en": "Number of patients",
+        "sv": "Antal köpare"
+      },
+            {"fi": "Kaikki ATC-luokat yhdessä",
+        "en": "All ATC-classes combined",
+        "sv": "Alla ATC-klasser tillsammans"
+      },
+            {"fi": "ATC-luokat tasolla",
+        "en": "ATC-classes at level",
+        "sv": "ATC-klasser på nivå"
+      },
+            {"fi": "Valitut ATC-luokat eri tasoilta",
+        "en": "Selected ATC-classes at various levels",
+        "sv": "Valitut ATC-luokat eri tasoilta på Svenska"
+      },
+            {"fi": "viikko",
+        "en": "week",
+        "sv": "veckan"
+      },
+      
+      
+            {"fi": "Apteekkien välityksellä korvattujen, tarkastelujakson aikana ostettujen lääkkeiden kustannukset. Kustannuksella tarkoitetaan lääkkeen hinnasta ja apteekin toimitusmaksusta koostuvaa summaa, josta ei ole vielä vähennetty sairausvakuutuskorvausta",
+        "en": "Expenses for medicines purchased during the statistical reference period which have been reimbursed in pharmacies. Expenses mean the sum of the price of the medicine and the pharmacy's handling fee from which reimbursements paid under the National Health Insurance Scheme has not yet been deducted",
+        "sv": "Kostnaderna för läkemedel som har ersatts på apoteken och som har inhandlats under statistikföringsperioden. Med kostnader avses summan av läkemedlets pris och apotekets expeditionsavgift från vilken sjukförsäkringsersättning inte ännu har dragits av"
+      },
+            {"fi": "Niiden henkilöiden lukumäärät, jotka ovat tarkastelujakson aikana ostaneet lääkkeitä. Nämä lääkeostot on joko korvattu apteekeissa tai niiden kustannukset ovat jääneet alle 50 euron omavastuun, jolloin ostot ovat vain kerryttäneet omavastuuta\n\nOstajien kumulatiivinen kokonaismäärä muodostetaan viikoittain määriteltyjen eri ostajien lukumäärien summana. Koska sama henkilö voi olla ostanut lääkettä useammalla eri viikolla, ei ostajien kumulatiivinen kokonaismäärä vastaa eri ostajien määrää",
+        "en": "Number of persons who during the statistical reference period have purchased medicines which have been reimbursed in pharmacies\n\nThe cumulative number of patients is calculated as a sum of distinct weekly patients. As a patient can purchase medicine in more than one week, the cumulative number of patients does not correspond to number of distinct patients.",
+        "sv": "Antal personer som under statistikföringsperioden har köpt läkemedel som ersatts på apoteken\n\nKumutiv summa kan innehålla samma person flera gånger."
+      },
+            {"fi": "Ostolla tarkoitetaan yhdellä kertaa apteekista toimitettua tietyn lääkevalmisteen erää. Vuodeksi määrätty lääkevalmiste kirjautuu tilastoon yleensä useana ostona, koska potilas noutaa lääkkeensä tavallisesti kolmen kuukauden välein",
+        "en": "Number of prescriptions for medicines reimbursed in pharmacies. A prescription means the batch of a certain medicinal product which is dispatched at the pharmacy at the one and the same time",
+        "sv": "Rapporten innehåller uppgifter om läkemedel och motsvarande preparat som har inhandlats under statistikföringsperioden och som har ersatts på apoteken enligt atc-kategori och ersättningsklass"
+      },
+            {"fi": "\n\nJokaisen paneelin ylempi kuva näyttää viikottaiset määrät ja alempi kertymän vuoden alusta (huomaa vaihtelevat y-akselit)",
+        "en": "\n\nFor each panel, the top chart marks the weekly amounts and the bottom chart represents the cumulative amount from the beginning of the year (note free Y scales).",
+        "sv": "\n\nPå den övre bilden är veckolig och på den nedre bilden kumulativ summa från årets början (Obs. skalan på Y-axeln) ."
+      },
+       {"fi": "Valitse kuvan muuttuja",
+        "en": "Select plot variable",
+        "sv": "Välj variabel för grafen"
+       },
+       {"fi": "Tiedot näytetään aluetasolla",
+        "en": "Data is presented at regional level of the whole Finland",
+        "sv": "Uppgifter presenteras på regional nivå i"
+       },
+       {"fi": "Tiedot ovat viikkotasolla vuosilta 2019-2021.",
+        "en": "Data is presented weekly between 2019-2021.",
+        "sv": "Data presenteras varje vecka mellan 2019-2021."
+       },
+       {"fi": "Mukana ovat seuraavien ATC-luokkien lääkeaineet",
+        "en": "Data includes medicines from the following categories in ATC-system",
+        "sv": "Uppgifterna inkluderar läkemedel från följande nivåer i ATC-systemet"
+       }
+      ]
+}

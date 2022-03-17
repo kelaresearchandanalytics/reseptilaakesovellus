@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+app_001.Rproj
+data/*.xlsx
+data/*.RDS
+app_003.Rproj
+kela_app_atc.Rproj
+korona_atc_app.Rproj
+shiny_bookmarks
+run.R
+rsconnect
+.Renviron
+reseptilaakesovellus.Rproj

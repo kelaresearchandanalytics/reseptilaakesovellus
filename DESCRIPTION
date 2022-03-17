@@ -1,0 +1,48 @@
+Package: reseptilaakesovellus
+Title: Reseptilääkkeiden ostot ATC-luokittain
+Version: 0.7.0
+Date: 2022-03-17
+Authors@R: c(
+    person("Markus", "Kainu", email = "markus.kainu@kela.fi", role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1376-503X")),
+    person('Pekka', 'Heino', email = 'pekka.heino@kela.fi', role = c('aut')),
+    person("Heini", "Kari", email = "heini.kari@kela.fi", role = "aut"),
+    person("Leena", "Saastamoinen", email = "leena.saastamoinen@kela.fi", role = "aut"),
+    person("Hanna", "Koskinen", email = "hanna.koskinen@kela.fi", role = "aut"),
+    person("Hanna", "Rättö", email = "hanna.ratto@kela.fi", role = "aut"),
+    person("Terhi", "Kurko", email = "terhi.kurko@kela.fi", role = "aut")
+    )
+Description: Voit verrata sairausvakuutuksesta korvattavien
+    reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä
+    viikkotasolla vuosien 2019-2021 välillä ATC-luokituksen tasoilla 1-5.
+License: MIT + file LICENSE
+URL: https://github.com/kelaresearchandanalytics/reseptilaakesovellus
+BugReports: 
+    https://github.com/kelaresearchandanalytics/reseptilaakesovellus/issues
+Imports: 
+    bslib,
+    config (>= 0.3.1),
+    dplyr,
+    geofacet,
+    ggplot2,
+    glue,
+    golem (>= 0.3.2),
+    hrbrthemes,
+    httr,
+    magrittr,
+    metathis,
+    patchwork,
+    ragg,
+    shiny (>= 1.7.1),
+    shiny.i18n,
+    shinycssloaders,
+    shinyWidgets,
+    svglite,
+    tidyr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)

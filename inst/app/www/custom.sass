@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap')
+
+body
+  font-family: 'Lato', sans-serif
+
+.blog-header, .blog-post, .blog-pagination
+  margin-bottom: 2rem
+
+.blog-post img
+  max-width: 100%
+
+img
+  &[src$='#center']
+    display: block
+    margin: 0.7rem auto
+
+  &[src$='#floatleft']
+    float: left
+    margin: 0.7rem
+
+
+  &[src$='#floatright']
+    float: right
+    margin: 0.7rem
+
+/*KELA-SPESIFIT
+body
+  border-bottom: 5px solid #fdb916
+  margin-bottom: 1rem
+
+.bg-kela
+  background-color: #fff !important
+
+a.bg-kela
+  &:focus, &:hover
+    background-color: #fff !important
+
+button.bg-kela
+  &:focus, &:hover
+    background-color: #fff !important
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder
+  color: #000000
+
+  &:active, &:focus, &:hover
+    color: #000000
+
+.navbar-kela
+  .navbar-brand
+    color: rgba(0, 0, 0, 0.9)
+
+    &:focus, &:hover
+      color: rgba(0, 0, 0, 0.9)
+
+  .navbar-nav .nav-link
+    background-color: #FFF
+    color: #003580
+
+  .navbar-text a
+    color: rgba(0, 0, 0, 0.9)
+
+.nav-pills > li.active > a
+  color: #ffffff
+  background-color: #80004f
+
+  &:hover, &:focus
+    color: #ffffff
+    background-color: #80004f
+
+.navbar-kela
+  border-top: 5px solid #FDB916
+  border-bottom: 1px solid #00347f
+  background-color: #FFF
+  color: #003580
+
+/*Otsikko-koot
+
+.display-4
+  font-size: 2.5rem
+  font-weight: 300
+  line-height: 1.2
+
+h1
+  font-size: 32px
+
+h2
+  font-size: 28px
+
+h3
+  font-size: 20px
+
+h5
+  margin-top: 0px
+
+
+
+.footer2
+  padding-top: 5px
+  padding-bottom: 0px
+
+
+
+.plot
+  margin-top: 20px
+  margin-bottom: 20px
+  height: auto
+  border: 2px solid #fff
+  box-shadow: 2px 2px 3px #ccc
+  -moz-box-shadow: 2px 2px 3px #ccc
+  -webkit-box-shadow: 2px 2px 3px #ccc
+  -khtml-box-shadow: 2px 2px 3px #ccc
+
+.badge-kela
+  font-weight: 400
+  color: #000000
+  background-color: #fffe
+
+.alert-secondary-kela
+  background-color: #BFCDDF
+  color: black
+  text-align: right
+  padding-right: 5px
+
+.card
+  position: relative
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-orient: vertical
+  -webkit-box-direction: normal
+  -ms-flex-direction: column
+  flex-direction: column
+  min-width: 0
+  word-wrap: break-word
+  background-color: #fff
+  background-clip: border-box
+  border: 1px solid rgba(0, 0, 0, 0.125)
+
+  > hr
+    margin-right: 0
+    margin-left: 0
+
+.card-body
+  -webkit-box-flex: 1
+  -ms-flex: 1 1 auto
+  flex: 1 1 auto
+  min-height: 1px
+  padding: 1.25rem
+
+.card-title
+  margin-bottom: 0.75rem
+
+.card-subtitle
+  margin-top: -0.375rem
+  margin-bottom: 0
+
+.card-text:last-child
+  margin-bottom: 0
+
+.card-link
+  &:hover
+    text-decoration: none
+
+  + .card-link
+    margin-left: 1.25rem
+
+.card-header
+  padding: 0.75rem 1.25rem
+  margin-bottom: 0
+  background-color: rgba(0, 0, 0, 0.03)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125)
+
+  + .list-group .list-group-item:first-child
+    border-top: 0
+
+.card-footer
+  padding: 0.75rem 1.25rem
+  background-color: rgba(0, 0, 0, 0.03)
+  border-top: 1px solid rgba(0, 0, 0, 0.125)
+
+.bg-primary
+  background-color: #003580 !important
+
+.border-primary
+  border-color: #003580 !important
+
+a.bg-primary
+  &:hover, &:focus
+    background-color: #003580 !important
+
+button.bg-primary
+  &:hover, &:focus
+    background-color: #003580 !important
+
+.fab
+  color: #393939
+
+.share-links
+  padding-top: 40px
+
+.automagia
+  color: black
+
+
+@media (max-width: 767px)
+  .navbar-nav
+    .open .dropdown-menu > li > a
+      color: black !important
+
+    .active .dropdown-menu > li > a
+      color: white !important
