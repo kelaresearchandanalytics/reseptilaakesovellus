@@ -31,9 +31,23 @@ mod_04_source_server <- function(id, mod_in){
       input_selected_language <- mod_in_01$selected_language
       
       
-      taglst <- create_about_app(lang = input_selected_language)
+      taglst01 <- create_about_app(lang = input_selected_language)
+      # viittaaminen sovellukseen
+      taglst02 <- HTML(glue('
+      <!--div class="alert alert-success" role="alert"-->
+                       <strong>Näin viittaat sovellukseen</strong>
+                       <div style = "margin-left:30px;">
+                       <em>{attr(unclass(citation("reseptilaakesovellus"))[[1]],"textVersion")}
+                            <br/>Accessed: {Sys.Date()}
+                       </em>
+                       <div>
+                       <!--/div-->
+                       '))
+      
+      
       tagList(
-        taglst
+        taglst01,
+        taglst02
       )
     })
     
