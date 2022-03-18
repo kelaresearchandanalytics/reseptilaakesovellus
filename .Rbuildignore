@@ -5,3 +5,4 @@
 ^\.Rproj\.user$
 ^app\.R$
 ^rsconnect$
+^Dockerfile$

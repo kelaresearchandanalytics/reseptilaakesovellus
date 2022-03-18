@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.Ruserdata
 app_001.Rproj
 data/*.xlsx
 data/*.RDS
