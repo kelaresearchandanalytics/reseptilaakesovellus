@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Resepto
+# Reseptilääkesovellus
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -15,7 +15,7 @@ dataa. Sovellus on julkaistu Kelan tutkimusblogissa:
 <https://tutkimusblogi.kela.fi/arkisto/5254>
 
 Suora linkki sovellukseen:
-kelaresearchandanalytics.shinyapps.io/korona_atc_app/
+<https://kelaresearchandanalytics.shinyapps.io/korona_atc_app/>
 
 ## Asentaminen
 

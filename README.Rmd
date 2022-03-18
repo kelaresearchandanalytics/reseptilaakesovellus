@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Resepto
+# Reseptilääkesovellus
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -22,7 +22,7 @@ Sovellus Kelan julkaisemaan lääkkeiden kulutusta käsittelevän datan selaamis
 
 Sovellus lukee sivulla: https://github.com/kelaresearchandanalytics/korona_atc_data julkaistua dataa. Sovellus on julkaistu Kelan tutkimusblogissa: https://tutkimusblogi.kela.fi/arkisto/5254
 
-Suora linkki sovellukseen: kelaresearchandanalytics.shinyapps.io/korona_atc_app/
+Suora linkki sovellukseen: https://kelaresearchandanalytics.shinyapps.io/korona_atc_app/
 
 
 ## Asentaminen
