@@ -127,7 +127,7 @@ create_accessibility_statement <- function(lang){
 <h2 id = "saavutettavuus">Saavutettavuusseloste</h2>
 <p>Tämä saavutettavuusseloste koskee Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelua. Seloste on laadittu 9.4.2021. Verkkosivuston saavutettavuus on arvioitu Kelassa.</p>
 <h3>Miten saavutettava verkkopalvelu on?</h3>
-<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2021. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää kriittiset saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
+<p>Reseptilääkkeiden ostot ATC-luokittain -verkkopalvelu on uudistettu keväällä 2022. Saavutettavuusvaatimukset on huomioitu, ja palvelu täyttää kriittiset saavutettavuusvaatimukset (WCAG-kriteeristö 2.1 A- ja AA-tasot).</p>
 
 <h3>Sisällöt, jotka eivät ole saavutettavia</h3>
 <p>Käyttäjät saattavat edelleen kohdata sivustolla joitakin saavutettavuusongelmia.
@@ -164,7 +164,7 @@ puhelinnumero vaihde 0295 016 000</p>
 <p>This is accessibility statement for Purchased prescription medicines in Finland -web application.
 Seloste on laadittu 9.4.2021. The assessment was carried out by Kela.</p>
 
-<p>Purchased prescription medicines in Finland -web application was update in Spring 2021.
+<p>Purchased prescription medicines in Finland -web application was update in Spring 2022.
 Our application meets the critical A and AA level accessibility criteria (WCAG criteria 2.1).</p>
 
 <h3>Parts of the content that are not accessible</h3>
@@ -208,7 +208,7 @@ Utlåtandet beskriver situationen per den 9.4.2021. Bedömningen har gjorts av F
 <ul>
 <li>Bilden saknas rätt textalternativ. (WCAG 1.1.1)</li>
 </ul>
-<p>Vi åtgärdar de ovan nämnda bristerna under våren 2021.</p>
+<p>Vi åtgärdar de ovan nämnda bristerna under våren 2022.</p>
 
 <h3>Ge oss respons på tillgängligheten</h3>
 <p>Upptäckte du någon brist i tjänstens tillgänglighet? Låt oss veta om det så gör vi vårt bästa för att åtgärda bristen.</p>
