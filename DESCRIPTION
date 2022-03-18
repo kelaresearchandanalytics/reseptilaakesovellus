@@ -33,6 +33,7 @@ Imports:
     patchwork,
     pkgload,
     ragg,
+    readr,
     shiny (>= 1.7.1),
     shiny.i18n,
     shinycssloaders,

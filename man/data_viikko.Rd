@@ -5,7 +5,7 @@
 \alias{data_viikko}
 \title{data_viikko}
 \format{
-A data frame with 363614 rows and 15 variables:
+A data frame with 365800 rows and 15 variables:
 \describe{
 \item{VUOSI}{VUOSI}
 \item{VIIKKO}{VIIKKO}
@@ -28,6 +28,6 @@ A data frame with 363614 rows and 15 variables:
 data_viikko
 }
 \description{
-Githubista 2022-03-15 haettu data
+Githubista 2022-03-17 haettu data
 }
 \keyword{datasets}

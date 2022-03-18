@@ -37,6 +37,7 @@ usethis::use_package('svglite')
 usethis::use_package('ragg')
 usethis::use_package('geofacet')
 usethis::use_package('hrbrthemes')
+usethis::use_package('readr')
 
 
 
