@@ -13,12 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# reseptilaakesovellus
+# Resepto
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Sovellus Kelan julkaisemaan lääkkeiden hamstrausta käsittelevän datan selaamiseen
+Sovellus Kelan julkaisemaan lääkkeiden kulutusta käsittelevän datan selaamiseen.
 
 Sovellus lukee sivulla: https://github.com/kelaresearchandanalytics/korona_atc_data julkaistua dataa. Sovellus on julkaistu Kelan tutkimusblogissa: https://tutkimusblogi.kela.fi/arkisto/5254
 
@@ -27,7 +27,7 @@ Suora linkki sovellukseen: kelaresearchandanalytics.shinyapps.io/korona_atc_app/
 
 ## Asentaminen
 
-You can install the development version of reseptilaakesovellus like so:
+Voit asentaa sovelluksen kehitysversion seuraavasti:
 
 ``` r
 remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus")

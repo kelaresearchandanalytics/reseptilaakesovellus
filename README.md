@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# reseptilaakesovellus
+# Resepto
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Sovellus Kelan julkaisemaan lääkkeiden hamstrausta käsittelevän datan
-selaamiseen
+Sovellus Kelan julkaisemaan lääkkeiden kulutusta käsittelevän datan
+selaamiseen.
 
 Sovellus lukee sivulla:
 <https://github.com/kelaresearchandanalytics/korona_atc_data> julkaistua
@@ -15,11 +15,11 @@ dataa. Sovellus on julkaistu Kelan tutkimusblogissa:
 <https://tutkimusblogi.kela.fi/arkisto/5254>
 
 Suora linkki sovellukseen:
-kelaresearchandanalytics.shinyapps.io/korona\_atc\_app/
+kelaresearchandanalytics.shinyapps.io/korona_atc_app/
 
 ## Asentaminen
 
-You can install the development version of reseptilaakesovellus like so:
+Voit asentaa sovelluksen kehitysversion seuraavasti:
 
 ``` r
 remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus")
@@ -51,7 +51,7 @@ citation("reseptilaakesovellus")
 #>   Markus Kainu, Pekka Heino, Heini Kari, Leena Saastamoinen, Hanna
 #>   Koskinen, Hanna Rättö and Terhi Kurko (2022). reseptilaakesovellus:
 #>   Reseptilääkkeiden ostot ATC-luokittain. R package version 0.7.0.
-#>   https://github.com/kelaresearchandanalytics/korona_atc_app
+#>   https://github.com/kelaresearchandanalytics/reseptilaakesovellus
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -60,7 +60,7 @@ citation("reseptilaakesovellus")
 #>     author = {Markus Kainu and Pekka Heino and Heini Kari and Leena Saastamoinen and Hanna Koskinen and Hanna Rättö and Terhi Kurko},
 #>     year = {2022},
 #>     note = {R package version 0.7.0},
-#>     url = {https://github.com/kelaresearchandanalytics/korona_atc_app},
+#>     url = {https://github.com/kelaresearchandanalytics/reseptilaakesovellus},
 #>   }
 ```
 
