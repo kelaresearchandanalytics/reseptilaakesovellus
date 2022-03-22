@@ -131,10 +131,10 @@ objects:
 parameters:
 - name: APP_NAME
   description: Name used for the app
-  value: shiny-app
+  value: reseptilaakesovellus
 - name: APP_LABEL
   description: Label used for the app
-  value: shiny
+  value: v0.7.0
 - name: APP_GIT_URI
   description: Deployment git uri
   value: ssh://git@bitbucket-alm.kela.fi/tutkimusjulkaisut/reseptilaakesovellus.git
