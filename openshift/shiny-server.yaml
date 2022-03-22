@@ -134,7 +134,7 @@ parameters:
   value: reseptilaakesovellus
 - name: APP_LABEL
   description: Label used for the app
-  value: v0.7.0
+  value: shiny
 - name: APP_GIT_URI
   description: Deployment git uri
   value: ssh://git@bitbucket-alm.kela.fi/tutkimusjulkaisut/reseptilaakesovellus.git
