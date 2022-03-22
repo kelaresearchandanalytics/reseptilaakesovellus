@@ -1,9 +1,9 @@
 apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
-  name: shiny-server-template
+  name: reseptilaakesovellus-template
   annotations:
-    description: "Shiny server template"
+    description: "Reseptilaakesovellus template"
 objects:
 
 - apiVersion: image.openshift.io/v1
