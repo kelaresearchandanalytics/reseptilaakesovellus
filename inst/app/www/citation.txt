@@ -1,8 +1,9 @@
 
 To cite package ‘reseptilaakesovellus’ in publications use:
 
-  Markus Kainu, Pekka Heino, Heini Kari, Leena Saastamoinen, Hanna Koskinen, Hanna Rättö and Terhi Kurko (2022).
-  reseptilaakesovellus: Reseptilääkkeiden ostot ATC-luokittain. R package version 0.7.0.
+  Markus Kainu, Pekka Heino, Heini Kari, Leena Saastamoinen, Hanna
+  Koskinen, Hanna Rättö and Terhi Kurko (2022). reseptilaakesovellus:
+  Reseptilääkkeiden ostot ATC-luokittain. R package version 0.7.0.
   https://github.com/kelaresearchandanalytics/reseptilaakesovellus
 
 A BibTeX entry for LaTeX users is
