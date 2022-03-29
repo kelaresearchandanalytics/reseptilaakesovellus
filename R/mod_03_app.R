@@ -274,6 +274,7 @@ mod_03_app_server <- function(id){
     
     output$inputs_action_button <- renderUI({
       
+      req(input$selected_language)
       tagList(
         actionButton(inputId = ns("nappula"), 
                      label = i18n$t("Päivitä kuva"), 
