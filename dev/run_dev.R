@@ -4,7 +4,6 @@ sass::sass(input = sass::sass_file("inst/app/www/custom.sass"), output = "inst/a
 # update citation file
 writeLines(capture.output(citation("reseptilaakesovellus")), "inst/app/www/citation.txt")
 
-
 # Set options here
 options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
 Sys.setlocale(locale="en_US.UTF-8")
