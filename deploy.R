@@ -1,4 +1,4 @@
-# script for GHA to deploy to shinyapps.io cloud!
+# script for GHA to deploy to shinyapps.io cloud!!
 
 library(rsconnect)
 
