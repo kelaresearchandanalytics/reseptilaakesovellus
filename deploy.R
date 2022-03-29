@@ -1,3 +1,5 @@
+# script for GHA to deploy to shinyapps.io
+
 library(rsconnect)
 
 # Print a list of app dependencies. Libraries need to be loaded
