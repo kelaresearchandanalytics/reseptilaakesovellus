@@ -178,20 +178,23 @@ mod_03_app_server <- function(id){
     })
     
     create_data <- reactive({
+
+      load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
       
-      
+
       if (get_golem_config("offline_data")){
       # if (golem::get_golem_options(which = "offline_data")){
-        load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
         names(data_viikko) <- tolower(names(data_viikko))
         df2 <- data_viikko
         
       } else {
+      df6 <-   data_viikko[data_viikko$VUOSI != 2022,]
       df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2022.csv")
-      df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
-      df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
-      df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
-      df2 <- bind_rows(df1,df3,df4,df5)
+      # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
+      # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
+      # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
+      # df2 <- bind_rows(df1,df3,df4,df5)
+      df2 <- bind_rows(df6,df5)
       names(df2) <- tolower(names(df2))
       }
       

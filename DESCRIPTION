@@ -1,7 +1,7 @@
 Package: reseptilaakesovellus
 Title: Reseptilääkkeiden ostot ATC-luokittain
-Version: 0.7.0
-Date: 2022-03-17
+Version: 0.7.1
+Date: 2022-03-30
 Authors@R: c(
     person("Markus", "Kainu", email = "markus.kainu@kela.fi", role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1376-503X")),
     person('Pekka', 'Heino', email = 'pekka.heino@kela.fi', role = c('aut')),
