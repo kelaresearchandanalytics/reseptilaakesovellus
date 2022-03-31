@@ -1,4 +1,4 @@
-FROM nexus.kela.fi:18444/rocker/shiny-verse:4.1.2
+FROM nexus.kela.fi:18444/andbarker/geoshinyverse:latest
 
 COPY inst/openshift/shiny-server.conf /etc/shiny-server/shiny-server.conf
 RUN chown -R shiny /var/lib/shiny-server/
