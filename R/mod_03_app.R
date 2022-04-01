@@ -1044,6 +1044,9 @@ mod_03_app_server <- function(id){
         if (input$selected_language == "sv") grid_geo$name <- grid_geo$name_sv
         if (input$selected_language == "en") grid_geo$name <- grid_geo$name_en
         
+        yrs <- unique(datplot$vuosi)
+        atc_color_palette_ss <- create_color_palette(years = yrs)
+        
         
         p <-  ggplot(datplot, aes(x = viikko, y = arvo,
                                   fill = factor(vuosi),
@@ -1072,8 +1075,8 @@ mod_03_app_server <- function(id){
                shape = NULL,
                y = plot_ytitle,
                x = plot_xtitle) +
-          scale_fill_manual(values = atc_color_palette) +
-          scale_color_manual(values = atc_color_palette) +
+          scale_fill_manual(values = atc_color_palette_ss) +
+          scale_color_manual(values = atc_color_palette_ss) +
           scale_y_continuous(labels = function(x) format(x, big.mark = " ",
                                                          scientific = FALSE),
                              limits = c(0,NA))
