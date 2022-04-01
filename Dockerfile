@@ -19,6 +19,7 @@ RUN echo 'options(repos = c(CRAN = "https://nexus.kela.fi/repository/r-public/")
 #RUN install2.r plyr
 
 RUN install2.r rsconnect magrittr glue bslib httr pkgload ggplot2 dplyr shiny config testthat tidyr svglite shinyWidgets shinycssloaders shiny.i18n readr ragg patchwork metathis hrbrthemes golem geofacet remotes
+RUN install2.r ragg
 
 ADD . /srv/code
 
