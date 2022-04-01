@@ -2,7 +2,7 @@ default:
   golem_name: reseptilaakesovellus
   golem_version: v0.7.1
   app_prod: no
-  offline_data: yes
+  offline_data: no
 production:
   app_prod: yes
 dev:
