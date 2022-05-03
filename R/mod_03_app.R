@@ -25,6 +25,7 @@ mod_03_app_ui <- function(id){
     HTML('<div class="container_1280">'),
     
     # VUODENVAIHDENOOTTI
+    
     #       HTML('<div class="alert alert-success" role="alert">
     # Sovelluksen datan päivitys on tauolla tammikuun ensimmäisen ja toisen viikon ajan. Datan päivittyy jälleen 20.1.2022 alkaen.</div>'),
     
