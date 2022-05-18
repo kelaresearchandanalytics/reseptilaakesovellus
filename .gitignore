@@ -17,5 +17,5 @@ reseptilaakesovellus.Rproj
 shiny-server.conf
 shiny-server.sh
 fix-username.sh
-deploy.R
-Dockerfile
+#deploy.R
+#Dockerfile
