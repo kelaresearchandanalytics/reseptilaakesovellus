@@ -354,7 +354,7 @@ create_info_text <- function(lang){
     
     taglst <-  tagList(
       tags$h1("Reseptilääkkeiden ostot ATC-luokittain", id = "ohje"),
-      tags$p("Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuosien 2019-2021 välillä ATC-luokituksen tasoilla 1-5. Tiedot perustuvat apteekkien päivittäin Kelaan toimittamiin ostotietoihin. Aineistosta on poistettu ne lääkeaineet, joita on yhtenä tai useampana viikkona ostanut alle 10 henkilöä."),
+      tags$p("Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuodesta 2019 alkaen ATC-luokituksen tasoilla 1-5. Tiedot perustuvat apteekkien päivittäin Kelaan toimittamiin ostotietoihin. Aineistosta on poistettu ne lääkeaineet, joita on yhtenä tai useampana viikkona ostanut alle 10 henkilöä."),
       tags$h2("Näin käytät sovellusta"),
       tags$p("Alkunäkymässä on kaikkien ATC-luokkien yhteenlasketut tiedot.",tags$br(),
              "Sovelluksessa on kaksi hakuvaihtoehtoa: ",tags$strong("valikkohaku"),"ja",tags$strong("tekstihaku."), "Valikkohaku etenee hierkkisesti ATC-tasoja ylhäältä alas. Tekstihaussa voit hakea yhdellä tai useammalla hakutermillä kaikilta ATC-tasoilta. Molemmissa hakutyypeissä voit valita tarkasteluun yhden tai useamman luokan.",
@@ -366,7 +366,7 @@ create_info_text <- function(lang){
     
     taglst <-  tagList(
       tags$h1("Purchased prescription medicines in Finland", id = "ohje"),
-      tags$p("This application provides information on reimbursable prescription medicines in terms of costs, number of purchases and number of patients on a weekly basis in 2019-2021. Medicines are classified in groups at five levels of the ATC-classification system. Information is based on daily data provided by Finnish community pharmacies. ATC groups including less than 10 patients in one or more weeks have been removed from the data."),
+      tags$p("This application provides information on reimbursable prescription medicines in terms of costs, number of purchases and number of patients on a weekly basis since 2019. Medicines are classified in groups at five levels of the ATC-classification system. Information is based on daily data provided by Finnish community pharmacies. ATC groups including less than 10 patients in one or more weeks have been removed from the data."),
       tags$h2("Instructions"),
       tags$p("Results including all ATC groups are shown combined on a start screen.",tags$br(),
              "There are two search options: hierarchical ",tags$strong("menu search"),"and text-based",tags$strong("text search."), "One or multiple ATC groups may be chosen at the same time.",
@@ -378,7 +378,7 @@ create_info_text <- function(lang){
     
     taglst <-  tagList(
       tags$h1("Receptbelagda läkemedel enligt ATC-systemet", id = "ohje"),
-      tags$p("Rapporter innehåller veckoliga kostnaderna och antalet inköp av läkemedel som har ersatts på apoteken, och antal personer som har köpt dessa läkemedel i 2019-2021. Läkemedel klassificeras enligt ATC-systemet i fem olika nivåer. Data kommer från apotek. Rapporten innehåller inte läkemedelsgrupper som bestått av färre än 10 personer i någon vecka."),
+      tags$p("Rapporter innehåller veckoliga kostnaderna och antalet inköp av läkemedel som har ersatts på apoteken, och antal personer som har köpt dessa läkemedel sedan 2019. Läkemedel klassificeras enligt ATC-systemet i fem olika nivåer. Data kommer från apotek. Rapporten innehåller inte läkemedelsgrupper som bestått av färre än 10 personer i någon vecka."),
       tags$h2("Så här använder du applikationen"),
       tags$p("På startsidan finns alla ATC grupper tillsammans.",tags$br(),
              "Du kan använda två olika sökalternativ: hierarkisk ",tags$strong("meny sök"),"och textbaserad",tags$strong("text sök,"), " och välja en eller flera läkemedelsgrupper samtidigt.",
