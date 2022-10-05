@@ -24,8 +24,8 @@ mod_01_meta_ui <- function(id){
         twitter_card_type = "summary_large_image",
         twitter_site = "@Kelantutkimus"
       )
-    ,
-    includeHTML(path = system.file("inst", "app/www/piwik.txt", package = "reseptilaakesovellus"))
+    #,
+    # includeHTML(path = system.file("inst", "app/www/piwik.txt", package = "reseptilaakesovellus"))
     
   )
 }
