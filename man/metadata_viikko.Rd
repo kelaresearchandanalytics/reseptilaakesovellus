@@ -5,7 +5,7 @@
 \alias{metadata_viikko}
 \title{metadata_viikko}
 \format{
-A data frame with 4054 rows and 6 variables:
+A data frame with 4039 rows and 6 variables:
 \describe{
 \item{CODE}{CODE}
 \item{VALUES}{VALUES}
@@ -19,6 +19,6 @@ A data frame with 4054 rows and 6 variables:
 metadata_viikko
 }
 \description{
-Githubista 2022-03-17 haettu metadata
+Githubista 2023-01-12 haettu metadata
 }
 \keyword{datasets}

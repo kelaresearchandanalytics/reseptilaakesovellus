@@ -10,7 +10,6 @@ options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mo
 Sys.setlocale(locale="en_US.UTF-8")
 options(scipen = 999)
 options(shiny.useragg = TRUE)
-options( "shiny.useragg" = TRUE)
 
 # Comment this if you don't want the app to be served on a random port
 options(shiny.port = httpuv::randomPort())

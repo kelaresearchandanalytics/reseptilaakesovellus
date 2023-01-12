@@ -182,15 +182,14 @@ mod_03_app_server <- function(id){
 
       load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
       
-
       if (get_golem_config("offline_data")){
       # if (golem::get_golem_options(which = "offline_data")){
         names(data_viikko) <- tolower(names(data_viikko))
         df2 <- data_viikko
         
       } else {
-      df6 <-   data_viikko[data_viikko$VUOSI != 2022,]
-      df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2022.csv")
+      df6 <-   data_viikko[data_viikko$VUOSI != 2023,]
+      df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2023.csv")
       # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
       # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
       # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
