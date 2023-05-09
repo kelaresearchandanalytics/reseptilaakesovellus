@@ -166,7 +166,8 @@ mod_03_app_server <- function(id){
         names(metadata_viikko) <- tolower(names(metadata_viikko))
         df2 <- metadata_viikko
       } else {
-      df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko.csv")
+      # df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.csv")
+      df2 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/metadata_viikko_hva.csv")
       }
       names(df2) <- tolower(names(df2))
       return(df2)
@@ -189,7 +190,8 @@ mod_03_app_server <- function(id){
         
       } else {
       df6 <-   data_viikko[data_viikko$VUOSI != 2023,]
-      df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2023.csv")
+      # df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2023.csv")
+      df5 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2023.csv")
       # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
       # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
       # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
