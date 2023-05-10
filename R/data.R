@@ -1,8 +1,8 @@
 #' data_viikko
 #' 
-#' Githubista 2023-01-12 haettu data
+#' Githubista 2023-05-10 haettu data
 #' 
-#' @format A data frame with 458325 rows and 15 variables:
+#' @format A data frame with 490720 rows and 15 variables:
 #' \describe{
 #' \item{VUOSI}{VUOSI}
 #' \item{VIIKKO}{VIIKKO}
@@ -24,9 +24,9 @@
 
 #' metadata_viikko
 #' 
-#' Githubista 2023-01-12 haettu metadata
+#' Githubista 2023-05-10 haettu metadata
 #' 
-#' @format A data frame with 4039 rows and 6 variables:
+#' @format A data frame with 4008 rows and 6 variables:
 #' \describe{
 #' \item{CODE}{CODE}
 #' \item{VALUES}{VALUES}

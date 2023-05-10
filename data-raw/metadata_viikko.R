@@ -1,6 +1,6 @@
 ## code to prepare `metadata_viikko` dataset goes here
 
-metadata_viikko <- readr::read_csv2('~/tutkimus/laaketutkimus/korona_atc_data/metadata_viikko_hva.csv')
+metadata_viikko <- readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/metadata_viikko_hva.csv')
 usethis::use_data(metadata_viikko, overwrite = TRUE)
 
 # document

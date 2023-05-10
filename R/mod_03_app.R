@@ -166,8 +166,8 @@ mod_03_app_server <- function(id){
         names(metadata_viikko) <- tolower(names(metadata_viikko))
         df2 <- metadata_viikko
       } else {
-      # df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.csv")
-      df2 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/metadata_viikko_hva.csv")
+      df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.csv")
+      # df2 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/metadata_viikko_hva.csv")
       }
       names(df2) <- tolower(names(df2))
       return(df2)
@@ -190,8 +190,8 @@ mod_03_app_server <- function(id){
         
       } else {
       df6 <-   data_viikko[data_viikko$VUOSI != 2023,]
-      # df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2023.csv")
-      df5 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2023.csv")
+      df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2023.csv")
+      # df5 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2023.csv")
       # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
       # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
       # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
@@ -542,8 +542,8 @@ mod_03_app_server <- function(id){
       
       req(input$selected_language)
       
-      regio_choices <- c("Koko Suomi", "Sairaanhoitopiirit")
-      names(regio_choices) <- c(i18n$t("Koko Suomi"),i18n$t("Sairaanhoitopiirit"))
+      regio_choices <- c("Koko Suomi", "Hyvinvointialueet")
+      names(regio_choices) <- c(i18n$t("Koko Suomi"),i18n$t("Hyvinvointialueet"))
       
       tagList(
         selectInput(inputId = ns("value_region"),
@@ -868,37 +868,88 @@ mod_03_app_server <- function(id){
       
       # Sairaahoitopiirien nimikäännökset geofacettiin
       
-      shpt <- structure(list(code = c("9", "15", "10", "25", "11", "19", "5",
-                                      "17", "14", "8", "21", "20", "6", "12", "18", "13", "7", "4",
-                                      "16", "3", "0"), name_fi = c("Etelä-Karjalan SHP", "Etelä-Pohjanmaan SHP",
-                                                                   "Etelä-Savon SHP", "Helsingin ja Uudenmaan SHP", "Itä-Savon SHP",
-                                                                   "Kainuun SHP", "Kanta-Hämeen SHP", "Keski-Pohjanmaan SHP", "Keski-Suomen SHP",
-                                                                   "Kymenlaakson SHP", "Lapin SHP", "Länsi-Pohjan SHP", "Pirkanmaan SHP",
-                                                                   "Pohjois-Karjalan SHP", "Pohjois-Pohjanmaan SHP", "Pohjois-Savon SHP",
-                                                                   "Päijät-Hämeen SHP", "Satakunnan SHP", "Vaasan SHP", "Varsinais-Suomen SHP",
-                                                                   "Ahvenanmaa"), name_sv = c("Södra Karelens SVD", "Syd-Österbottens SVD",
-                                                                                              "Södra Savolax SVD", "Helsingfors och Nylands SVD", "Östra Savolax SVD",
-                                                                                              "Kajanalands SVD", "Centrala Tavastlands SVD", "Mellersta Österbottens SVD",
-                                                                                              "Mellersta Finlands SVD", "Kymmenedalens SVD", "Lapplands SVD",
-                                                                                              "Länsi-Pohja SVD", "Birkalands SVD", "Norra Karelens SVD", "Norra Österbottens SVD",
-                                                                                              "Norra Savolax SVD", "Päijät-Häme SVD", "Satakunta SVD", "Vasa SVD",
-                                                                                              "Egentliga Finlands SVD", "Åland"), name_en = c("South Karelia Hospital District",
-                                                                                                                                              "South Ostrobothnia Hospital District", "South Savo Hospital District",
-                                                                                                                                              "Helsinki and Uusimaa Hospital District", "Itä-Savo Hospital District",
-                                                                                                                                              "Kainuu Hospital District", "Kanta-Häme Hospital District",
-                                                                                                                                              "Central Ostrobothnia Hospital District", "Central Finland Hospital District",
-                                                                                                                                              "Kymenlaakso Hospital District", "Lappi Hospital District", "Länsi-Pohja Hospital District",
-                                                                                                                                              "Pirkanmaa Hospital District", "North Karelia Hospital District",
-                                                                                                                                              "North Ostrobothnia Hospital District", "North Savo Hospital District",
-                                                                                                                                              "Päijät-Häme Hospital District", "Satakunta Hospital District",
-                                                                                                                                              "Vaasa Hospital District", "Southwest Finland Hospital District",
-                                                                                                                                              "Åland")), row.names = c(NA, -21L), class = c("tbl_df", "tbl",
-                                                                                                                                                                                            "data.frame"))
+      # shpt <- structure(list(code = c("9", "15", "10", "25", "11", "19", "5",
+      #                                 "17", "14", "8", "21", "20", "6", "12", "18", "13", "7", "4",
+      #                                 "16", "3", "0"), name_fi = c("Etelä-Karjalan SHP", "Etelä-Pohjanmaan SHP",
+      #                                                              "Etelä-Savon SHP", "Helsingin ja Uudenmaan SHP", "Itä-Savon SHP",
+      #                                                              "Kainuun SHP", "Kanta-Hämeen SHP", "Keski-Pohjanmaan SHP", "Keski-Suomen SHP",
+      #                                                              "Kymenlaakson SHP", "Lapin SHP", "Länsi-Pohjan SHP", "Pirkanmaan SHP",
+      #                                                              "Pohjois-Karjalan SHP", "Pohjois-Pohjanmaan SHP", "Pohjois-Savon SHP",
+      #                                                              "Päijät-Hämeen SHP", "Satakunnan SHP", "Vaasan SHP", "Varsinais-Suomen SHP",
+      #                                                              "Ahvenanmaa"), name_sv = c("Södra Karelens SVD", "Syd-Österbottens SVD",
+      #                                                                                         "Södra Savolax SVD", "Helsingfors och Nylands SVD", "Östra Savolax SVD",
+      #                                                                                         "Kajanalands SVD", "Centrala Tavastlands SVD", "Mellersta Österbottens SVD",
+      #                                                                                         "Mellersta Finlands SVD", "Kymmenedalens SVD", "Lapplands SVD",
+      #                                                                                         "Länsi-Pohja SVD", "Birkalands SVD", "Norra Karelens SVD", "Norra Österbottens SVD",
+      #                                                                                         "Norra Savolax SVD", "Päijät-Häme SVD", "Satakunta SVD", "Vasa SVD",
+      #                                                                                         "Egentliga Finlands SVD", "Åland"), name_en = c("South Karelia Hospital District",
+      #                                                                                                                                         "South Ostrobothnia Hospital District", "South Savo Hospital District",
+      #                                                                                                                                         "Helsinki and Uusimaa Hospital District", "Itä-Savo Hospital District",
+      #                                                                                                                                         "Kainuu Hospital District", "Kanta-Häme Hospital District",
+      #                                                                                                                                         "Central Ostrobothnia Hospital District", "Central Finland Hospital District",
+      #                                                                                                                                         "Kymenlaakso Hospital District", "Lappi Hospital District", "Länsi-Pohja Hospital District",
+      #                                                                                                                                         "Pirkanmaa Hospital District", "North Karelia Hospital District",
+      #                                                                                                                                         "North Ostrobothnia Hospital District", "North Savo Hospital District",
+      #                                                                                                                                         "Päijät-Häme Hospital District", "Satakunta Hospital District",
+      #                                                                                                                                         "Vaasa Hospital District", "Southwest Finland Hospital District",
+      #                                                                                                                                         "Åland")), row.names = c(NA, -21L), class = c("tbl_df", "tbl",
+      #                                                                                                                                                                                       "data.frame"))
+      shpt <- structure(list(hyvinvointialue_code = c(1, 2, 3, 4, 5, 6, 7, 
+                                                      8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 90, 91, 
+                                                      99), hyvinvointialue_name_fi = c("Itä-Uudenmaan hyvinvointialue", 
+                                                                                       "Keski-Uudenmaan hyvinvointialue", "Länsi-Uudenmaan hyvinvointialue", 
+                                                                                       "Vantaan ja Keravan hyvinvointialue", "Varsinais-Suomen hyvinvointialue", 
+                                                                                       "Satakunnan hyvinvointialue", "Kanta-Hämeen hyvinvointialue", 
+                                                                                       "Pirkanmaan hyvinvointialue", "Päijät-Hämeen hyvinvointialue", 
+                                                                                       "Kymenlaakson hyvinvointialue", "Etelä-Karjalan hyvinvointialue", 
+                                                                                       "Etelä-Savon hyvinvointialue", "Pohjois-Savon hyvinvointialue", 
+                                                                                       "Pohjois-Karjalan hyvinvointialue", "Keski-Suomen hyvinvointialue", 
+                                                                                       "Etelä-Pohjanmaan hyvinvointialue", "Pohjanmaan hyvinvointialue", 
+                                                                                       "Keski-Pohjanmaan hyvinvointialue", "Pohjois-Pohjanmaan hyvinvointialue", 
+                                                                                       "Kainuun hyvinvointialue", "Lapin hyvinvointialue", "Helsingin kaupunki", 
+                                                                                       "Ahvenanmaa", "Koko Suomi"), hyvinvointialue_name_sv = c("Östra Nylands välfärdsområde", 
+                                                                                                                                                "Mellersta Nylands välfärdsområde", "Västra Nylands välfärdsområde", 
+                                                                                                                                                "Vanda och Kervo välfärdsområde", "Egentliga Finlands välfärdsområde", 
+                                                                                                                                                "Satakunta välfärdsområde", "Egentliga Tavastlands välfärdsområde", 
+                                                                                                                                                "Birkalands välfärdsområde", "Päijänne-Tavastlands välfärdsområde", 
+                                                                                                                                                "Kymmenedalens välfärdsområde", "Södra Karelens välfärdsområde", 
+                                                                                                                                                "Södra Savolax välfärdsområde", "Norra Savolax välfärdsområde", 
+                                                                                                                                                "Norra Karelens välfärdsområde", "Mellersta Finlands välfärdsområde", 
+                                                                                                                                                "Södra Österbottens välfärdsområde", "Österbottens välfärdsområde", 
+                                                                                                                                                "Mellersta Österbottens välfärdsområde", "Norra Österbottens välfärdsområde", 
+                                                                                                                                                "Kajanalands välfärdsområde", "Lapplands välfärdsområde", 
+                                                                                                                                                "Helsingfors stad", "Åland", "Hela Finland"), hyvinvointialue_name_en = c("East Uusimaa wellbeing services county", 
+                                                                                                                                                                                                                          "Central Uusimaa wellbeing services county", "West Uusimaa wellbeing services county", 
+                                                                                                                                                                                                                          "Vantaa and Kerava wellbeing services county", "Southwest Finland wellbeing services county", 
+                                                                                                                                                                                                                          "Satakunta wellbeing services county", "Kanta-Häme wellbeing services county", 
+                                                                                                                                                                                                                          "Pirkanmaa wellbeing services county", "Päijät-Häme wellbeing services county", 
+                                                                                                                                                                                                                          "Kymenlaakso wellbeing services county", "South Karelia wellbeing services county", 
+                                                                                                                                                                                                                          "South Savo wellbeing services county", "North Savo wellbeing services county", 
+                                                                                                                                                                                                                          "North Karelia wellbeing services county", "Central Finland wellbeing services county", 
+                                                                                                                                                                                                                          "South Ostrobothnia wellbeing services county", "Ostrobothnia wellbeing services county", 
+                                                                                                                                                                                                                          "Central Ostrobothnia wellbeing services county", "North Ostrobothnia wellbeing services county", 
+                                                                                                                                                                                                                          "Kainuu wellbeing services county", "Lapland wellbeing services county", 
+                                                                                                                                                                                                                          "City of Helsinki", "Åland", "Whole Finland")), row.names = c(NA, 
+                                                                                                                                                                                                                                                                                        -24L), class = "data.frame")
+      
+      names(shpt) <- c("code","name_fi","name_sv","name_en")
       mygrid <- data.frame(
-        name = c("Lapin SHP", "Länsi-Pohjan SHP", "Kainuun SHP", "Pohjois-Pohjanmaan SHP", "Keski-Pohjanmaan SHP", "Pohjois-Karjalan SHP", "Pohjois-Savon SHP", "Keski-Suomen SHP", "Etelä-Pohjanmaan SHP", "Vaasan SHP", "Satakunnan SHP", "Pirkanmaan SHP", "Päijät-Hämeen SHP", "Itä-Savon SHP", "Etelä-Savon SHP", "Etelä-Karjalan SHP", "Kymenlaakson SHP", "Kanta-Hämeen SHP", "Varsinais-Suomen SHP", "Helsingin ja Uudenmaan SHP", "Ahvenanmaa"),
-        code = c("21", "20", "19", "18", "17", "12", "13", "14", "15", "16", "4", "6", "7", "11", "10", "9", "8", "5", "3", "25", "0"),
-        row = c(1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6),
-        col = c(4, 3, 4, 3, 2, 5, 4, 3, 2, 1, 1, 2, 3, 5, 4, 4, 3, 2, 1, 2, 1),
+        name = c("Lapin hyvinvointialue", "Kainuun hyvinvointialue", 
+                 "Pohjois-Pohjanmaan hyvinvointialue", "Keski-Pohjanmaan hyvinvointialue", 
+                 "Pohjanmaan hyvinvointialue", "Etelä-Pohjanmaan hyvinvointialue", 
+                 "Pohjois-Savon hyvinvointialue", "Keski-Suomen hyvinvointialue", 
+                 "Pohjois-Karjalan hyvinvointialue", "Pirkanmaan hyvinvointialue", 
+                 "Satakunnan hyvinvointialue", "Etelä-Savon hyvinvointialue", 
+                 "Päijät-Hämeen hyvinvointialue", "Kanta-Hämeen hyvinvointialue", 
+                 "Etelä-Karjalan hyvinvointialue", "Kymenlaakson hyvinvointialue", 
+                 "Varsinais-Suomen hyvinvointialue", "Ahvenanmaa", "Länsi-Uudenmaan hyvinvointialue", 
+                 "Keski-Uudenmaan hyvinvointialue", "Itä-Uudenmaan hyvinvointialue", 
+                 "Vantaan ja Keravan hyvinvointialue", "Helsingin kaupunki"),
+        code = c("21", "20", "19", "18", "17", "16", "13", "15", 
+                 "14", "8", "6", "12", "9", "7", "11", "10", "5", "91", "3", 
+                 "2", "1", "4", "90"),
+        row = c(1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7), 
+        col = c(3, 4, 3, 2, 1, 1, 3, 2, 4, 2, 1, 4, 3, 2, 4, 3, 1, 1, 2, 3, 4, 3, 2),
         stringsAsFactors = FALSE
       )
       

@@ -81,6 +81,10 @@
         "en": "Hospital Districts",
         "sv": "Sjukvårdsdistrikt"
       },
+            {"fi": "Hyvinvointialueet",
+        "en": "Wellbeing services counties",
+        "sv": "Välfärdsområde"
+      },      
             {"fi": "Jaa valintasi",
         "en": "Share your selections",
         "sv": "Dela dina val"
