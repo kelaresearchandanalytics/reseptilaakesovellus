@@ -98,7 +98,7 @@ mod_03_app_server <- function(id){
 
     # change language
     observeEvent(input[["selected_language"]], {
-      shiny.i18n::update_lang(session, input[["selected_language"]])
+      shiny.i18n::update_lang(session = session, language = input[["selected_language"]])
       i18n_r()$set_translation_language(input[["selected_language"]])
     })
     
