@@ -16,7 +16,7 @@ mod_02_navi_ui <- function(id){
       }
           
       .container_1280 {
-        max-width: 1420px; 
+        max-width: 1280px; 
         margin: auto;
         }")),
     HTML('<a class="sr-only sr-only-focusable" href="#maincontent">Skip to main</a>

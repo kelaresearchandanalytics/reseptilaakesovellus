@@ -1150,7 +1150,8 @@ mod_03_app_server <- function(id){
         if (input$value_region == "Koko Suomi"){
           height = paste0(200 + ceiling(facet_n/2) * 550, "px")
         } else {
-          height = "1100px"
+          height = "1300px"
+          width = "150%"
         }
         dims <- c(width,height)
       }
@@ -1161,8 +1162,11 @@ mod_03_app_server <- function(id){
     
     output$plot_main_ui <- renderUI({
       width_height <- dimsReactive()
+      tagList(
+      tags$div(class = "plot", style='width:100%; overflow-x: auto; overflow-y: hidden;',
       plotOutput(ns("plot_main"), width = width_height[1], height = width_height[2])
-      
+      )
+      )
     })
     
     output$ui_download_csv <- renderUI({
@@ -1222,8 +1226,8 @@ mod_03_app_server <- function(id){
         if (input$value_region == "Koko Suomi"){
           height = 3 + ceiling(facet_n/2) * 5.2
         } else {
-          height = 18
-          width = 22
+          height = 28
+          width = 32
         }
         
         # if (TRUE) plot_varname <- "var_kustannus"
