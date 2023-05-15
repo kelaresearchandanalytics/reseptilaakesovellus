@@ -26,8 +26,17 @@ mod_03_app_ui <- function(id){
     
     # VUODENVAIHDENOOTTI
     
-    #       HTML('<div class="alert alert-success" role="alert">
-    # Sovelluksen datan päivitys on tauolla tammikuun ensimmäisen ja toisen viikon ajan. Datan päivittyy jälleen 20.1.2022 alkaen.</div>'),
+          HTML('
+<div class="row alert alert-info" role="alert">
+<div class = "col-1">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve" width="3em" height="3em" name="IconBellCircle" class="mt-1 mb-2 icon-size-m"><path d="M503.4.6C227.6-1.3 2.4 220.8.6 496.6s220.2 501 496 502.9 501-220.2 502.9-496S779.3 2.4 503.4.6zm455.9 502.5C957.6 756.8 750.5 961 496.9 959.3S39 750.5 40.7 496.9C42.4 243.2 249.5 39 503.1 40.7S961 249.5 959.3 503.1z" fill="currentColor"></path><path d="m722.1 637.9 1.5-197.9c.7-100.2-65.3-185.4-156.7-213.4l.3-34.8c0-36.5-29.3-66.2-65.6-66.2s-65.9 29.3-66 65.5l-.3 36.5c-88.9 29-154.2 114-154.9 213.3l-1.4 197c-31.2 4.7-55 31.5-55 64 0 35.9 28.9 64.8 64.8 64.8h118.9c9 42.5 46.6 74.3 91.8 74.7 45.8.4 84.1-31.7 93.3-74.7h118.9c35.6 0 64.6-29 65.2-64.8-.1-32.4-23.7-59.2-54.8-64zM475.8 191.4c0-14.1 11.6-25.6 25.8-25.6 13.9 0 25.4 11.6 25.4 25.8l-.2 26.8c-6.3-.7-12.6-1.2-19-1.3-10.9-.3-21.7.3-32.3 1.6l.3-27.3zM320.6 441.2c.7-102.6 85.3-186.6 186.2-184 98.6 2.6 177.4 83.7 176.6 182.5l-1.5 197H319.1l1.5-195.5zm179.2 360.1c-23-.2-42.5-14.5-50.3-34.6H551c-8.1 20.4-28 34.8-51.2 34.6zm211.9-74.8h-282c-1.2-.2-2.5-.4-3.8-.4-1.4 0-2.8.1-4.2.4h-133c-13.7 0-24.6-10.9-24.6-24.6 0-13.7 10.9-24.6 24.6-24.6H712c13.6 0 24.5 10.8 24.6 24.4-.2 13.7-11.5 24.8-24.9 24.8z" fill="currentColor"></path></svg>
+</div>
+<div class = "col-9">
+  <strong>Aluejako muuttunut!</strong> 15.5.2023 alkaen sairaanhoitopiirit on korvattu hyvinvointialueilla!<br/>
+  <strong>Regionindelning ändrad!</strong> Från 15.5.2023 ersätts sjukvårdsdistrikt med välfärdsområder!<br/>
+  <strong>Regional subdivision changed!</strong> From 15.5.2023 hospital districts are replaced with well-being srvice counties!
+  </div>
+               </div>'),
     
     
     
