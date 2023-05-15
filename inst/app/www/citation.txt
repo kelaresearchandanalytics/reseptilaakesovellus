@@ -2,7 +2,7 @@
 To cite package ‘reseptilaakesovellus’ in publications use:
 
   Kainu M, Heino P, Kari H, Saastamoinen L, Koskinen H, Rättö H, Kurko T (2023). _reseptilaakesovellus: Reseptilääkkeiden
-  ostot ATC-luokittain_. R package version 0.7.3, <https://github.com/kelaresearchandanalytics/reseptilaakesovellus>.
+  ostot ATC-luokittain_. R package version 0.8.0, <https://github.com/kelaresearchandanalytics/reseptilaakesovellus>.
 
 A BibTeX entry for LaTeX users is
 
@@ -10,7 +10,7 @@ A BibTeX entry for LaTeX users is
     title = {reseptilaakesovellus: Reseptilääkkeiden ostot ATC-luokittain},
     author = {Markus Kainu and Pekka Heino and Heini Kari and Leena Saastamoinen and Hanna Koskinen and Hanna Rättö and Terhi Kurko},
     year = {2023},
-    note = {R package version 0.7.3},
+    note = {R package version 0.8.0},
     url = {https://github.com/kelaresearchandanalytics/reseptilaakesovellus},
   }
 
