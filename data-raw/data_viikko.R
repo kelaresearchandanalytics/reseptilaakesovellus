@@ -9,7 +9,8 @@ data_viikko <- dplyr::bind_rows(
   readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2019.csv'),
   readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2020.csv'),
   readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2021.csv'),
-  readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2022.csv')
+  readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2022.csv'),
+  readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2023.csv')
   # readr::read_csv2('~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2019.csv'),
   # readr::read_csv2('~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2020.csv'),
   # readr::read_csv2('~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2021.csv'),
@@ -17,6 +18,7 @@ data_viikko <- dplyr::bind_rows(
   
 )
 
+arrow::write_parquet(data_viikko, sink = "./inst/parquet/data_viikko.parquet")
 usethis::use_data(data_viikko, overwrite = TRUE)
 # document
 karttasovellus::document_data(dat = data_viikko, 

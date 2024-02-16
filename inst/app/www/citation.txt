@@ -1,4 +1,3 @@
-
 To cite package ‘reseptilaakesovellus’ in publications use:
 
   Kainu M, Heino P, Kari H, Saastamoinen L, Koskinen H, Rättö H, Kurko T (2023). _reseptilaakesovellus: Reseptilääkkeiden
@@ -13,6 +12,3 @@ A BibTeX entry for LaTeX users is
     note = {R package version 0.8.0},
     url = {https://github.com/kelaresearchandanalytics/reseptilaakesovellus},
   }
-
-
-

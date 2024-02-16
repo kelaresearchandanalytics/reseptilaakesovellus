@@ -175,7 +175,9 @@ mod_03_app_server <- function(id){
         names(metadata_viikko) <- tolower(names(metadata_viikko))
         df2 <- metadata_viikko
       } else {
-      df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.csv")
+      # data_viikko <- arrow::read_parquet("./inst/parquet/data_viikko.parquet")  
+      # df2 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.csv")
+        df2 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/metadata_viikko_hva.parquet")
       # df2 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/metadata_viikko_hva.csv")
       }
       names(df2) <- tolower(names(df2))
@@ -190,7 +192,8 @@ mod_03_app_server <- function(id){
     
     create_data <- reactive({
 
-      load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
+      # load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
+      data_viikko <- arrow::read_parquet("./inst/parquet/data_viikko.parquet")
       
       if (get_golem_config("offline_data")){
       # if (golem::get_golem_options(which = "offline_data")){
@@ -198,14 +201,15 @@ mod_03_app_server <- function(id){
         df2 <- data_viikko
         
       } else {
-      df6 <-   data_viikko[data_viikko$VUOSI != 2023,]
-      df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2023.csv")
+      df6 <-   data_viikko[data_viikko$VUOSI != 2024,]
+      # df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.csv")
+      df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
       # df5 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2023.csv")
       # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
       # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
       # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
       # df2 <- bind_rows(df1,df3,df4,df5)
-      df2 <- bind_rows(df6,df5)
+      df2 <- bind_rows(df6,df5 %>% select(-UPDATED))
       names(df2) <- tolower(names(df2))
       }
       
