@@ -47,6 +47,99 @@ golem_add_external_resources <- function() {
   )
 
   tags$head(
+      tags$style(HTML("
+        
+body {font-family: 'Lato', sans-serif;
+  border-top: 5px solid #fdb916;
+  border-bottom: 5px solid #fdb916;
+  margin-bottom: 1rem;
+
+}
+
+.bg-kela {
+  background-color:#f3f5f9!important}
+
+.btn-outline-kela{color:#003580;border-color:#003580}
+
+.shiny-plot-output {
+  /*border: 1px solid rgba(0, 0, 0, 0.125);*/
+margin-top: 20px;
+margin-bottom: 20px;
+height: auto;
+border:3px solid #fff;
+/*box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+-moz-box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+-webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+-khtml-box-shadow: 0 4px 8px rgba(0,0,0,0.15);*/
+ 
+}
+
+
+
+.btn-outline-default, .btn-default:not(.btn-primary, .btn-secondary, .btn-info, .btn-success, .btn-danger, .btn-warning, .btn-light, .btn-dark, .btn-link, [class*='btn-outline-']) {
+  --bs-btn-hover-bg: #003580;
+  --bs-btn-hover-color: #FFF;
+}
+
+
+
+
+a:focus  {
+  border: 3px solid #393939;
+}
+
+
+
+/*
+
+.selectize-input {
+  border: 0px solid #ced4da !important;
+  background-color: #003580 !important;
+  color: #FFF;
+  padding-top: 15px;
+}
+
+.form-control.selectize-control:focus-within  {
+  
+  border: 2px solid #000;
+}
+
+.accordion-button:focus {
+  border: 3px solid #393939;
+}
+
+.form-control:focus {
+  border: 3px solid #393939;
+}
+
+.form:focus {
+  border: 3px solid #393939;
+}
+  
+.selectize-control.single .selectize-input:not(.no-arrow)::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: calc(0.75rem + 5px);
+  margin-top: 0px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 7px 0px 7px;
+  border-color: #FFF transparent transparent transparent;
+}
+
+.selectize-dropdown .selected {
+  background-color: #f0f5ff;
+  color: #000;
+}
+
+
+*/
+
+
+")),
     favicon(),
     bundle_resources(
       path = app_sys("app/www"),

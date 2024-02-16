@@ -80,7 +80,7 @@ button.bg-kela:focus, button.bg-kela:hover {
 }
 
 .navbar-kela {
-  border-top: 5px solid #FDB916;
+  /*border-top: 5px solid #FDB916*/
   border-bottom: 1px solid #00347f;
   background-color: #FFF;
   color: #003580;

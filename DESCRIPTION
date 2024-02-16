@@ -1,7 +1,7 @@
 Package: reseptilaakesovellus
 Title: Reseptilääkkeiden ostot ATC-luokittain
-Version: 0.9.0
-Date: 2024-02-16
+Version: 0.9.1
+Date: 2024-04-30
 Authors@R: c(
     person("Markus", "Kainu", , "markus.kainu@kela.fi", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0003-1376-503X")),
@@ -12,9 +12,7 @@ Authors@R: c(
     person("Hanna", "Rättö", , "hanna.ratto@kela.fi", role = "aut"),
     person("Terhi", "Kurko", , "terhi.kurko@kela.fi", role = "aut")
   )
-Description: Voit verrata sairausvakuutuksesta korvattavien
-    reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä
-    viikkotasolla vuosien 2019-2021 välillä ATC-luokituksen tasoilla 1-5.
+Description: Voit verrata sairausvakuutuksesta korvattavien reseptilääkkeiden kustannuksia, ostomääriä ja ostajien määriä viikkotasolla vuosien 2019-2024 välillä ATC-luokituksen tasoilla 1-5
 License: MIT + file LICENSE
 URL: https://github.com/kelaresearchandanalytics/reseptilaakesovellus
 BugReports: 

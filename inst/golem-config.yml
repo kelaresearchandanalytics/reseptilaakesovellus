@@ -1,6 +1,6 @@
 default:
   golem_name: reseptilaakesovellus
-  golem_version: v0.9.0
+  golem_version: v0.9.1
   app_prod: no
   offline_data: no
 production:

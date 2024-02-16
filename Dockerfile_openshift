@@ -1,0 +1,11 @@
+FROM aymp-dh.nexus.kela.fi/r_base_images/shiny_base_geospatial:latest
+
+ADD . /srv/code
+
+RUN chown -R shiny /srv/code/
+RUN chmod -R a+rwX /srv/code/
+
+WORKDIR /srv/code
+# Asennetaan sovellus ja R-riippuvuudet
+RUN R -e 'remotes::install_local(upgrade="never")'
+CMD /usr/bin/shiny-server.sh

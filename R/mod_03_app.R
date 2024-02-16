@@ -27,7 +27,7 @@ mod_03_app_ui <- function(id){
     # VUODENVAIHDENOOTTI
     
           HTML('
-<div class="row alert alert-info" role="alert">
+<!--div class="row alert alert-info" role="alert">
 <div class = "col-1">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" xml:space="preserve" width="3em" height="3em" name="IconBellCircle" class="mt-1 mb-2 icon-size-m"><path d="M503.4.6C227.6-1.3 2.4 220.8.6 496.6s220.2 501 496 502.9 501-220.2 502.9-496S779.3 2.4 503.4.6zm455.9 502.5C957.6 756.8 750.5 961 496.9 959.3S39 750.5 40.7 496.9C42.4 243.2 249.5 39 503.1 40.7S961 249.5 959.3 503.1z" fill="currentColor"></path><path d="m722.1 637.9 1.5-197.9c.7-100.2-65.3-185.4-156.7-213.4l.3-34.8c0-36.5-29.3-66.2-65.6-66.2s-65.9 29.3-66 65.5l-.3 36.5c-88.9 29-154.2 114-154.9 213.3l-1.4 197c-31.2 4.7-55 31.5-55 64 0 35.9 28.9 64.8 64.8 64.8h118.9c9 42.5 46.6 74.3 91.8 74.7 45.8.4 84.1-31.7 93.3-74.7h118.9c35.6 0 64.6-29 65.2-64.8-.1-32.4-23.7-59.2-54.8-64zM475.8 191.4c0-14.1 11.6-25.6 25.8-25.6 13.9 0 25.4 11.6 25.4 25.8l-.2 26.8c-6.3-.7-12.6-1.2-19-1.3-10.9-.3-21.7.3-32.3 1.6l.3-27.3zM320.6 441.2c.7-102.6 85.3-186.6 186.2-184 98.6 2.6 177.4 83.7 176.6 182.5l-1.5 197H319.1l1.5-195.5zm179.2 360.1c-23-.2-42.5-14.5-50.3-34.6H551c-8.1 20.4-28 34.8-51.2 34.6zm211.9-74.8h-282c-1.2-.2-2.5-.4-3.8-.4-1.4 0-2.8.1-4.2.4h-133c-13.7 0-24.6-10.9-24.6-24.6 0-13.7 10.9-24.6 24.6-24.6H712c13.6 0 24.5 10.8 24.6 24.4-.2 13.7-11.5 24.8-24.9 24.8z" fill="currentColor"></path></svg>
 </div>
@@ -36,7 +36,8 @@ mod_03_app_ui <- function(id){
   <strong>Regionindelning ändrad!</strong> Från 15.5.2023 ersätts sjukvårdsdistrikt med välfärdsområder!<br/>
   <strong>Regional subdivision changed!</strong> From 15.5.2023 hospital districts are replaced with well-being srvice counties!
   </div>
-               </div>'),
+               </div-->'),
+    tags$div(style = "padding-top: 20px;"),
     
     
     
@@ -66,6 +67,7 @@ mod_03_app_ui <- function(id){
     fluidRow(
       column(width = 4,
              uiOutput(ns("inputs_varname")),
+             uiOutput(ns("inputs_year")),
              uiOutput(ns("inputs_action_button"))
              ),
       column(width = 2,
@@ -116,12 +118,16 @@ mod_03_app_server <- function(id){
     output$ui_language_selection <- renderUI({
       tagList(
         radioButtons(inputId = ns('selected_language'),
-                     label = "Valitse kieli / Select language / Välj språk",
+                     label = tags$strong("Valitse kieli / Select language / Välj språk"),
                      inline = TRUE,
                      choices = i18n$get_languages(),
                      selected = input$selected_language)
       )
     })
+    
+
+    
+
     
     
     output$ui_atc_box <- renderUI({
@@ -193,7 +199,8 @@ mod_03_app_server <- function(id){
     create_data <- reactive({
 
       # load(system.file("data", "data_viikko.rda", package="reseptilaakesovellus"))
-      data_viikko <- arrow::read_parquet("./inst/parquet/data_viikko.parquet")
+      data_viikko <- arrow::read_parquet("./inst/parquet/data_viikko.parquet") %>% 
+        filter(VUOSI %in% input$value_year)
       
       if (get_golem_config("offline_data")){
       # if (golem::get_golem_options(which = "offline_data")){
@@ -203,13 +210,19 @@ mod_03_app_server <- function(id){
       } else {
       df6 <-   data_viikko[data_viikko$VUOSI != 2024,]
       # df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.csv")
-      df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
+      # df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
+      if (2024 %in% input$value_year){
+        df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
+        df2 <- bind_rows(df6,df5 %>% select(-UPDATED))
+      } else {
+        df2 <- bind_rows(df6 %>% select(-UPDATED))
+      }
       # df5 <- readr::read_csv2("~/tutkimus/laaketutkimus/korona_atc_data/data_viikko_hva_2023.csv")
       # df4 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2021.csv")
       # df3 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2020.csv")
       # df1 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_2019.csv")
       # df2 <- bind_rows(df1,df3,df4,df5)
-      df2 <- bind_rows(df6,df5 %>% select(-UPDATED))
+      
       names(df2) <- tolower(names(df2))
       }
       
@@ -255,7 +268,7 @@ mod_03_app_server <- function(id){
       
       tagList(
         radioButtons(inputId = ns("value_search_type"),
-                     label = i18n$t("Valitse hakutyyppi"),
+                     label = tags$strong(i18n$t("Valitse hakutyyppi")),
                      choices = search_choices,
                      selected = search_choices[1])
       )
@@ -272,7 +285,7 @@ mod_03_app_server <- function(id){
         tagList(
           textInput(inputId = ns("value_atc_search_string"),
                     width = "100%",
-                    label = i18n$t("Rajaa ATC-luokka nimen/koodin perusteella (erota hakuehdot |-merkillä)"),
+                    label = tags$strong(i18n$t("Rajaa ATC-luokka nimen/koodin perusteella (erota hakuehdot |-merkillä)")),
                     value ="R03|A04")
         )
         
@@ -290,12 +303,22 @@ mod_03_app_server <- function(id){
     #   )
     # })
     
+    output$inputs_year <- renderUI({
+      tagList(
+        selectInput(ns("value_year"), 
+                    label = tags$strong(i18n$t("Valitse vuodet")), 
+                    choices = 2019:2024, 
+                    multiple = TRUE, selected = 2023:2024)
+      )
+    })
+    
     output$inputs_action_button <- renderUI({
       
       req(input$selected_language)
       tagList(
         actionButton(inputId = ns("nappula"), 
                      label = i18n$t("Päivitä kuva"), 
+                     class="m-1 kds-theme-kela kds-btn kds-btn--solid kds-btn--primary",
                      icon("fas fa-sync")
         )
       )
@@ -307,6 +330,7 @@ mod_03_app_server <- function(id){
       
       req(input$selected_language)
       req(input$value_atc_search_string)
+      req(input$year)
       
       if (input$value_search_type == "tekstihaku"){
         datalist <- create_data()
@@ -335,7 +359,7 @@ mod_03_app_server <- function(id){
         tagList(
           # selectInput("value_atc_1", "ATC-taso 1", choices = values1, selected = NA)
           pickerInput(inputId = ns("value_atc_search"),
-                      label = i18n$t("Ja valitse kuvan/taulukon ATC-luokat hakutuloksista"),
+                      label = tags$strong(i18n$t("Ja valitse kuvan/taulukon ATC-luokat hakutuloksista")),
                       choices = values2,
                       width = "100%",
                       # selected = values2_sel,
@@ -372,7 +396,7 @@ mod_03_app_server <- function(id){
         tagList(
           # selectInput("value_atc_1", "ATC-taso 1", choices = values1, selected = NA)
           pickerInput(inputId = ns("value_atc_1"),
-                      label = i18n$t("Valitse ATC-luokka taso 1"),
+                      label = tags$strong(i18n$t("Valitse ATC-luokka taso 1")),
                       choices = values1,
                       width = "100%",
                       # selected = kela,
@@ -411,7 +435,7 @@ mod_03_app_server <- function(id){
         tagList(
           # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA)
           pickerInput(inputId = ns("value_atc_2"),
-                      label = i18n$t("Valitse ATC-luokka taso 2"),
+                      label = tags$strong(i18n$t("Valitse ATC-luokka taso 2")),
                       choices = values1,
                       width = "100%",
                       # selected = kela,
@@ -450,7 +474,7 @@ mod_03_app_server <- function(id){
         tagList(
           # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA)
           pickerInput(inputId = ns("value_atc_3"),
-                      label = i18n$t("Valitse ATC-luokka taso 3"),
+                      label = tags$strong(i18n$t("Valitse ATC-luokka taso 3")),
                       choices = values1,
                       width = "100%",
                       # selected = kela,
@@ -491,7 +515,7 @@ mod_03_app_server <- function(id){
         tagList(
           # selectInput("value_atc_1", "ATC-luokka taso 1", choices = values1, selected = NA)
           pickerInput(inputId = ns("value_atc_4"),
-                      label = i18n$t("Valitse ATC-luokka taso 4"),
+                      label = tags$strong(i18n$t("Valitse ATC-luokka taso 4")),
                       choices = values1,
                       width = "100%",
                       # selected = kela,
@@ -560,7 +584,7 @@ mod_03_app_server <- function(id){
       
       tagList(
         selectInput(inputId = ns("value_region"),
-                    label = i18n$t("Valitse aluetaso"),
+                    label = tags$strong(i18n$t("Valitse aluetaso")),
                     choices = regio_choices,
                     selected = regio_choices[1])
       )
@@ -580,7 +604,8 @@ mod_03_app_server <- function(id){
       
       tagList(
         radioButtons(inputId = ns("value_varname"),
-                     label = i18n$t("Valitse kuvan muuttuja"),inline = TRUE,
+                     label = tags$strong(i18n$t("Valitse kuvan muuttuja")),
+                     inline = TRUE,
                      choices = var_choices,
                      selected = var_choices[1])
       )
@@ -1185,7 +1210,8 @@ mod_03_app_server <- function(id){
     output$ui_download_csv <- renderUI({
       req(input$selected_language)
       tagList(
-        downloadButton(ns("download_csv"), i18n$t("Lataa .csv-data"))
+        downloadButton(ns("download_csv"), i18n$t("Lataa .csv-data"),
+                       class="m-1 kds-theme-kela kds-btn kds-btn--solid kds-btn--primary")
       )
     })
     
@@ -1205,21 +1231,24 @@ mod_03_app_server <- function(id){
     output$ui_download_pdf <- renderUI({
       req(input$selected_language)
       tagList(
-        downloadButton(ns("download_pdf"), i18n$t("Lataa .pdf-kuva"))
+        downloadButton(ns("download_pdf"), i18n$t("Lataa .pdf-kuva"),
+                       class="m-1 kds-theme-kela kds-btn kds-btn--solid kds-btn--primary")
       )
     })
     
     output$ui_download_png <- renderUI({
       req(input$selected_language)
       tagList(
-        downloadButton(ns("download_png"), i18n$t("Lataa .png-kuva"))
+        downloadButton(ns("download_png"), i18n$t("Lataa .png-kuva"),
+                       class="m-1 kds-theme-kela kds-btn kds-btn--solid kds-btn--primary")
       )
     })
     
     output$ui_download_svg <- renderUI({
       req(input$selected_language)
       tagList(
-        downloadButton(ns("download_svg"), i18n$t("Lataa .svg-kuva"))
+        downloadButton(ns("download_svg"), i18n$t("Lataa .svg-kuva"),
+                       class="m-1 kds-theme-kela kds-btn kds-btn--solid kds-btn--primary")
       )
     })
     

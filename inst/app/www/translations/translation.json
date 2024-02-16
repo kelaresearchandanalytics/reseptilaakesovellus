@@ -5,7 +5,11 @@
          "en": "Select language",
          "sv": "Välj språk"
       },
-       {"fi": "Reseptilääkkeiden ostot ATC-luokittain",
+      {"fi": "Valitse vuodet",
+        "en": "Select years",
+        "sv": "Välj år"
+      },
+      {"fi": "Reseptilääkkeiden ostot ATC-luokittain",
         "en": "Prescription medicines classified by ATC system",
         "sv": "Receptbelagda läkemedel klassificeras enligt ATC-systemet"
       },
