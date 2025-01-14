@@ -208,11 +208,11 @@ mod_03_app_server <- function(id){
         df2 <- data_viikko
         
       } else {
-      df6 <-   data_viikko[data_viikko$VUOSI != 2024,]
+      df6 <-   data_viikko[data_viikko$VUOSI != 2025,]
       # df5 <- readr::read_csv2("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.csv")
       # df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
-      if (2024 %in% input$value_year){
-        df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2024.parquet")
+      if (2025 %in% input$value_year){
+        df5 <- arrow::read_parquet("https://raw.githubusercontent.com/kelaresearchandanalytics/korona_atc_data/master/data_viikko_hva_2025.parquet")
         df2 <- bind_rows(df6,df5 %>% select(-UPDATED))
       } else {
         df2 <- bind_rows(df6 %>% select(-UPDATED))
@@ -307,8 +307,8 @@ mod_03_app_server <- function(id){
       tagList(
         selectInput(ns("value_year"), 
                     label = tags$strong(i18n$t("Valitse vuodet")), 
-                    choices = 2019:2024, 
-                    multiple = TRUE, selected = 2023:2024)
+                    choices = 2019:2025, 
+                    multiple = TRUE, selected = 2024:2025)
       )
     })
     

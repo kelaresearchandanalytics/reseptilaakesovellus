@@ -7,6 +7,6 @@ usethis::use_data(metadata_viikko, overwrite = TRUE)
 
 
 # document
-karttasovellus::document_data(dat = metadata_viikko, 
-                              neim = "metadata_viikko", 
-                              description = paste("Githubista", Sys.Date(), "haettu metadata"))
+# karttasovellus::document_data(dat = metadata_viikko, 
+#                               neim = "metadata_viikko", 
+#                               description = paste("Githubista", Sys.Date(), "haettu metadata"))
