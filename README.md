@@ -49,7 +49,7 @@ citation("reseptilaakesovellus")
 #> 
 #>   Kainu M, Heino P, Kari H, Saastamoinen L, Koskinen H, Rättö H, Kurko
 #>   T (2025). _reseptilaakesovellus: Reseptilääkkeiden ostot
-#>   ATC-luokittain_. R package version 0.10.0,
+#>   ATC-luokittain_. R package version 0.10.1,
 #>   <https://github.com/kelaresearchandanalytics/reseptilaakesovellus>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -58,7 +58,7 @@ citation("reseptilaakesovellus")
 #>     title = {reseptilaakesovellus: Reseptilääkkeiden ostot ATC-luokittain},
 #>     author = {Markus Kainu and Pekka Heino and Heini Kari and Leena Saastamoinen and Hanna Koskinen and Hanna Rättö and Terhi Kurko},
 #>     year = {2025},
-#>     note = {R package version 0.10.0},
+#>     note = {R package version 0.10.1},
 #>     url = {https://github.com/kelaresearchandanalytics/reseptilaakesovellus},
 #>   }
 ```
@@ -67,4 +67,4 @@ citation("reseptilaakesovellus")
 
 - Lähdekoodi on lisensoitu
   [MIT-lisenssillä](https://opensource.org/licenses/MIT)
-- © 2020-2022 Markus Kainu & Kela
+- © 2020-2025 Markus Kainu & Kela
