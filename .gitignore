@@ -21,4 +21,4 @@ fix-username.sh
 #Dockerfile
 aymp-buid.conf
 Dockerfile_openshift
-#Dockerfile_shinyproxy
+Dockerfile_shinyproxy
