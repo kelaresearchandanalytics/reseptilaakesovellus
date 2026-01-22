@@ -6,6 +6,7 @@ RUN install2.r rsconnect magrittr glue bslib httr pkgload ggplot2 dplyr shiny co
 #WORKDIR /build_zone
 #RUN R -e 'remotes::install_local(upgrade="never")'
 #RUN rm -rf /build_zone
+RUN R -e 'remotes::install_github("hrbrmstr/hrbrthemes")'
 RUN R -e 'remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus")'
 ADD . /home/shinyusr
 WORKDIR /home/shinyusr
