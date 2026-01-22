@@ -1,0 +1,10 @@
+^renv$
+^renv\.lock$
+^LICENSE\.md$
+^README\.Rmd$
+^data-raw$
+^.*\.Rproj$
+^\.Rproj\.user$
+^app\.R$
+^rsconnect$
+^Dockerfile$
