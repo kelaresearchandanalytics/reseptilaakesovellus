@@ -4,12 +4,12 @@ RUN install2.r rsconnect magrittr glue bslib httr pkgload ggplot2 dplyr shiny co
 RUN R -e 'remotes::install_github("hrbrmstr/hrbrthemes")'
 RUN R -e 'remotes::install_github("yonicd/covrpage")'
 
-RUN mkdir /build_zone
-ADD . /build_zone
-WORKDIR /build_zone
-RUN R -e 'remotes::install_local(upgrade="never")'
+#RUN mkdir /build_zone
+#ADD . /build_zone
+#WORKDIR /build_zone
+#RUN R -e 'remotes::install_local(upgrade="never")'
 #RUN rm -rf /build_zone
-#RUN R -e 'remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus")'
+RUN R -e 'remotes::install_github("kelaresearchandanalytics/reseptilaakesovellus", ref = "release")'
 ADD . /home/shinyusr
 WORKDIR /home/shinyusr
 CMD Rscript deploy.R
