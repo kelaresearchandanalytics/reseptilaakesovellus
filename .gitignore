@@ -19,3 +19,6 @@ shiny-server.sh
 fix-username.sh
 #deploy.R
 #Dockerfile
+aymp-buid.conf
+Dockerfile_openshift
+Dockerfile_shinyproxy
