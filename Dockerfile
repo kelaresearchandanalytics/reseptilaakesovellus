@@ -1,6 +1,6 @@
 FROM rocker/r-ver:4.5.2
 RUN apt-get update && apt-get install -y  gdal-bin git-core libcairo2-dev libcurl4-openssl-dev libfribidi-dev libgdal-dev libgeos-dev libgeos++-dev libgit2-dev libharfbuzz-dev libicu-dev libpng-dev libproj-dev libssl-dev libtiff-dev libudunits2-dev libxml2-dev make pandoc zlib1g-dev && rm -rf /var/lib/apt/lists/*
-RUN install2.r rsconnect magrittr glue bslib httr pkgload ggplot2 dplyr shiny config testthat tidyr svglite shinyWidgets shinycssloaders shiny.i18n readr ragg patchwork metathis hrbrthemes golem geofacet remotes arrow
+RUN install2.r rsconnect magrittr glue bslib httr pkgload ggplot2 dplyr shiny config testthat tidyr svglite shinyWidgets shinycssloaders shiny.i18n readr ragg patchwork metathis golem geofacet remotes arrow attachment covrpage devtools rhub rmarkdown usethis
 RUN R -e 'remotes::install_github("hrbrmstr/hrbrthemes")'
 RUN mkdir /build_zone
 ADD . /build_zone
