@@ -5,6 +5,7 @@ ADD . /srv/code
 RUN chmod -R a+rwX /srv/code/
 
 WORKDIR /srv/code
+RUN R -e 'remotes::install_github("hrbrmstr/hrbrthemes")'
 RUN R -e 'remotes::install_local(upgrade="always")'
 
 EXPOSE 3838
