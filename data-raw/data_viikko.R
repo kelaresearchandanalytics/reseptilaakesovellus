@@ -1,5 +1,5 @@
 ## code to prepare `data_viikko` dataset goes here
-
+library(dplyr)
 data_viikko <- dplyr::bind_rows(
   # readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_2019.csv'),
   # readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_2020.csv'),
@@ -11,7 +11,8 @@ data_viikko <- dplyr::bind_rows(
   arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2021.parquet'),
   arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2022.parquet'),
   arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2023.parquet'),
-  arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2024.parquet')
+  arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2024.parquet'),
+  arrow::read_parquet('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2025.parquet')
   
   # readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2019.csv'),
   # readr::read_csv2('https://github.com/kelaresearchandanalytics/korona_atc_data/raw/master/data_viikko_hva_2020.csv'),

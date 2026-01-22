@@ -1,4 +1,4 @@
-FROM 192.168.0.112:5000/geospatial
+FROM 192.168.1.112:5000/rckr-geospatial-vaphana
 
 ADD . /srv/code
 

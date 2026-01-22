@@ -28,6 +28,6 @@ A data frame with 490720 rows and 15 variables:
 data_viikko
 }
 \description{
-Githubista 2023-05-10 haettu data
+Githubista 2026-01-22 haettu data
 }
 \keyword{datasets}

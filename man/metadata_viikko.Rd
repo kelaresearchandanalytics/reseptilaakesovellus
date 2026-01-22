@@ -19,6 +19,6 @@ A data frame with 4008 rows and 6 variables:
 metadata_viikko
 }
 \description{
-Githubista 2023-05-10 haettu metadata
+Githubista 2026-01-22 haettu metadata
 }
 \keyword{datasets}

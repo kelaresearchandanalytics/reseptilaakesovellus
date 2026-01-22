@@ -51,8 +51,8 @@ is.even <- function(x) x %% 2 == 0
 #' 
 #' @export
 create_color_palette <- function(years){
-  atc_color_palette <- c('#66cdaa','#ff8c00','#00ff00','#ff1493','#0000ff','#1e90ff','#7f00ff')
-  atc_year_range <- 2019:2025
+  atc_color_palette <- c('#97aa1a','#66cdaa','#ff8c00','#00ff00','#ff1493','#0000ff','#1e90ff','#7f00ff')
+  atc_year_range <- 2019:2026
   
   tmp <- tibble(col = atc_color_palette,
                 year = atc_year_range)
