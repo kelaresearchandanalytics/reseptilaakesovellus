@@ -27,7 +27,7 @@ app_ui <- function(request) {
              a(href = "https://reseptilaakesovellus.vaphana.com", 
                target = "_blank", 
                "reseptilaakesovellus.vaphana.com"),tags$br(),
-             "Kokeilen myös kehitteillä olevaa JS-versiota: ", 
+             "Kokeile myös kehitteillä olevaa JS-versiota: ", 
              a(href = "https://app.vaphana.com/reseptilaake", 
                target = "_blank",
                "app.vaphana.com/reseptilaake"))
