@@ -15,18 +15,30 @@ app_ui <- function(request) {
   
   tagList(
     # Leave this function for adding external resources
-    golem_add_external_resources(),
+    #    golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
       theme = bslib::bs_theme(primary = "#0f73a9",
                               base_font = "Lato",
                               heading_font = "Noto Sans"),
-      mod_01_meta_ui("01_meta_1"),
-      mod_02_navi_ui("02_navi_1"),
-      mod_03_app_ui("03_app_1"),
-      mod_04_source_ui("04_source_1"),
-      mod_05_accessibility_ui("05_accessibility_1"),
-      tags$html(HTML('</main></div>'))
+      # uudelleenohjaus
+      tags$h1("Reseptilääkkeiden ostot ATC-luokittain"),
+      tags$p("Toimiva versio sovelluksesta löytyy osoitteesta: ", 
+             a(href = "https://reseptilaakesovellus.vaphana.com", 
+               target = "_blank", 
+               "reseptilaakesovellus.vaphana.com"),tags$br(),
+             "Kokeilen myös kehitteillä olevaa JS-versiota: ", 
+             a(href = "https://app.vaphana.com/reseptilaake", 
+               target = "_blank",
+               "app.vaphana.com/reseptilaake"))
+      
+      
+      #      mod_01_meta_ui("01_meta_1"),
+      #      mod_02_navi_ui("02_navi_1"),
+      #      mod_03_app_ui("03_app_1"),
+      #      mod_04_source_ui("04_source_1"),
+      #      mod_05_accessibility_ui("05_accessibility_1"),
+      #      tags$html(HTML('</main></div>'))
     )
   )
 }
